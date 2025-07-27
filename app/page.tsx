@@ -9,12 +9,17 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChevronDown, ChevronUp, Copy, Check, Zap, Search } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function OneTapTools() {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({})
   const [searchTerm, setSearchTerm] = useState("")
   const { toast } = useToast()
+  const isMobile = useIsMobile()
+
+  // Helper function for responsive button size
+  const getButtonSize = () => (isMobile ? "default" : "sm")
 
   // Tool states - organized by category
   const [toolStates, setToolStates] = useState<Record<string, any>>({
@@ -127,7 +132,7 @@ export default function OneTapTools() {
       const chars = text.length
       const charsNoSpaces = text.replace(/\s/g, "").length
       const lines = text.split("\n").length
-      const paragraphs = text.split(/\n\s*\n/).filter((p) => p.trim()).length
+      const paragraphs = text.split(/\n\s*\n/).filter((p: string) => p.trim()).length
       updateToolState(
         "textOutput",
         `Words: ${words}\nCharacters: ${chars}\nCharacters (no spaces): ${charsNoSpaces}\nLines: ${lines}\nParagraphs: ${paragraphs}`,
@@ -149,13 +154,13 @@ export default function OneTapTools() {
     titleCase: () => {
       updateToolState(
         "textOutput",
-        toolStates.textInput.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()),
+        toolStates.textInput.replace(/\w\S*/g, (txt: string) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()),
       )
     },
 
     camelCase: () => {
       const camelCased = toolStates.textInput
-        .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
+        .replace(/(?:^\w|[A-Z]|\b\w)/g, (word: string, index: number) => {
           return index === 0 ? word.toLowerCase() : word.toUpperCase()
         })
         .replace(/\s+/g, "")
@@ -166,7 +171,7 @@ export default function OneTapTools() {
       const snakeCased = toolStates.textInput
         .replace(/\W+/g, " ")
         .split(/ |\B(?=[A-Z])/)
-        .map((word) => word.toLowerCase())
+        .map((word: string) => word.toLowerCase())
         .join("_")
       updateToolState("textOutput", snakeCased)
     },
@@ -175,7 +180,7 @@ export default function OneTapTools() {
       const kebabCased = toolStates.textInput
         .replace(/\W+/g, " ")
         .split(/ |\B(?=[A-Z])/)
-        .map((word) => word.toLowerCase())
+        .map((word: string) => word.toLowerCase())
         .join("-")
       updateToolState("textOutput", kebabCased)
     },
@@ -214,13 +219,13 @@ export default function OneTapTools() {
     },
 
     removeEmptyLines: () => {
-      const lines = toolStates.textInput.split("\n").filter((line) => line.trim() !== "")
+      const lines = toolStates.textInput.split("\n").filter((line: string) => line.trim() !== "")
       updateToolState("textOutput", lines.join("\n"))
     },
 
     addLineNumbers: () => {
       const lines = toolStates.textInput.split("\n")
-      const numbered = lines.map((line, index) => `${index + 1}. ${line}`)
+      const numbered = lines.map((line: string, index: number) => `${index + 1}. ${line}`)
       updateToolState("textOutput", numbered.join("\n"))
     },
 
@@ -263,7 +268,7 @@ export default function OneTapTools() {
     textToBinary: () => {
       const binary = toolStates.textInput
         .split("")
-        .map((char) => char.charCodeAt(0).toString(2).padStart(8, "0"))
+        .map((char: string) => char.charCodeAt(0).toString(2).padStart(8, "0"))
         .join(" ")
       updateToolState("textOutput", binary)
     },
@@ -272,7 +277,7 @@ export default function OneTapTools() {
       try {
         const text = toolStates.textInput
           .split(" ")
-          .map((binary) => String.fromCharCode(Number.parseInt(binary, 2)))
+          .map((binary: string) => String.fromCharCode(Number.parseInt(binary, 2)))
           .join("")
         updateToolState("textOutput", text)
       } catch (error) {
@@ -283,7 +288,7 @@ export default function OneTapTools() {
     textToHex: () => {
       const hex = toolStates.textInput
         .split("")
-        .map((char) => char.charCodeAt(0).toString(16).padStart(2, "0"))
+        .map((char: string) => char.charCodeAt(0).toString(16).padStart(2, "0"))
         .join(" ")
       updateToolState("textOutput", hex)
     },
@@ -292,7 +297,7 @@ export default function OneTapTools() {
       try {
         const text = toolStates.textInput
           .split(" ")
-          .map((hex) => String.fromCharCode(Number.parseInt(hex, 16)))
+          .map((hex: string) => String.fromCharCode(Number.parseInt(hex, 16)))
           .join("")
         updateToolState("textOutput", text)
       } catch (error) {
@@ -343,7 +348,7 @@ export default function OneTapTools() {
       const morse = toolStates.textInput
         .toUpperCase()
         .split("")
-        .map((char) => morseCode[char] || char)
+        .map((char: string) => morseCode[char] || char)
         .join(" ")
       updateToolState("textOutput", morse)
     },
@@ -390,7 +395,7 @@ export default function OneTapTools() {
       }
       const text = toolStates.textInput
         .split(" ")
-        .map((morse) => morseToChar[morse] || morse)
+        .map((morse: string) => morseToChar[morse] || morse)
         .join("")
       updateToolState("textOutput", text)
     },
@@ -398,7 +403,7 @@ export default function OneTapTools() {
     rgbToHex: () => {
       const rgb = toolStates.textInput.match(/\d+/g)
       if (rgb && rgb.length === 3) {
-        const hex = rgb.map((x) => Number.parseInt(x).toString(16).padStart(2, "0")).join("")
+        const hex = rgb.map((x: string) => Number.parseInt(x).toString(16).padStart(2, "0")).join("")
         updateToolState("textOutput", `#${hex}`)
       } else {
         toast({ title: "Error", description: "Invalid RGB format. Use: 255, 0, 0", variant: "destructive" })
@@ -729,11 +734,15 @@ export default function OneTapTools() {
         sub: "1234567890",
         name: "John Doe",
         iat: Math.floor(Date.now() / 1000),
+        exp: Math.floor(Date.now() / 1000) + 3600, // 1 hour from now
       }
 
-      const encodedHeader = btoa(JSON.stringify(header))
-      const encodedPayload = btoa(JSON.stringify(payload))
-      const signature = "signature_placeholder"
+      const encodedHeader = btoa(JSON.stringify(header)).replace(/=/g, "")
+      const encodedPayload = btoa(JSON.stringify(payload)).replace(/=/g, "")
+      
+      // Simple signature for demo purposes (not cryptographically secure)
+      const data = `${encodedHeader}.${encodedPayload}`
+      const signature = btoa(`demo_signature_${data.length}_${Date.now()}`).replace(/=/g, "").substring(0, 43)
 
       const jwt = `${encodedHeader}.${encodedPayload}.${signature}`
       updateToolState("jwtOutput", jwt)
@@ -1212,7 +1221,7 @@ export default function OneTapTools() {
                 <div className="relative">
                   <Textarea value={toolStates.textOutput} readOnly className="bg-white/5 border-white/20 text-white" />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "text")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1265,7 +1274,7 @@ export default function OneTapTools() {
                 <div className="relative">
                   <Textarea value={toolStates.textOutput} readOnly className="bg-white/5 border-white/20 text-white" />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "transform")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1319,7 +1328,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white min-h-[120px]"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "utilities")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1342,7 +1351,7 @@ export default function OneTapTools() {
                 onChange={(e) => updateToolState("textInput", e.target.value)}
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 min-h-[120px]"
               />
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <Input
                   placeholder="Find..."
                   value={toolStates.findText}
@@ -1370,7 +1379,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white min-h-[120px]"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "findreplace")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1416,7 +1425,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.base64Output, "base64")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1451,7 +1460,7 @@ export default function OneTapTools() {
                 <div className="relative">
                   <Textarea value={toolStates.urlOutput} readOnly className="bg-white/5 border-white/20 text-white" />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.urlOutput, "url")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1496,7 +1505,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono text-sm"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "binary")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1535,7 +1544,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "morse")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1574,7 +1583,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "colorconv")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1615,7 +1624,7 @@ export default function OneTapTools() {
                     className="border border-white/20 rounded-lg bg-white p-2"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.qrOutput, "qr")}
                     className="bg-white/10 hover:bg-white/20"
                   >
@@ -1660,7 +1669,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.passwordOutput, "password")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1688,7 +1697,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.uuidOutput, "uuid")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1727,7 +1736,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white min-h-[120px]"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.loremOutput, "lorem")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1761,7 +1770,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "slug")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1778,7 +1787,7 @@ export default function OneTapTools() {
           description: "Generate random numbers within range",
           content: (
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <Input
                   type="number"
                   placeholder="Min"
@@ -1805,7 +1814,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono text-center text-2xl"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.randomResult, "random")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1839,7 +1848,7 @@ export default function OneTapTools() {
                         className="bg-white/5 border-white/20 text-white font-mono flex-1"
                       />
                       <Button
-                        size="sm"
+                        size={getButtonSize()}
                         onClick={() => copyToClipboard(color, `color-${index}`)}
                         className="bg-white/10 hover:bg-white/20"
                       >
@@ -1875,7 +1884,7 @@ export default function OneTapTools() {
                     className="border border-white/20 rounded-lg bg-white p-2"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.barcodeOutput, "barcode")}
                     className="bg-white/10 hover:bg-white/20"
                   >
@@ -1925,7 +1934,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white min-h-[120px] font-mono text-sm"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.jsonOutput, "json")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -1964,7 +1973,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white min-h-[120px] font-mono text-sm"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.htmlOutput, "html")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2003,7 +2012,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white min-h-[120px] font-mono text-sm"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.cssOutput, "css")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2056,7 +2065,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white min-h-[120px] font-mono text-sm"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.regexOutput, "regex")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2095,7 +2104,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white min-h-[120px] font-mono text-sm"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.jwtOutput, "jwt")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2150,7 +2159,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono text-sm"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.hashOutput, "hash")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2203,7 +2212,7 @@ export default function OneTapTools() {
                 <div className="relative">
                   <Textarea value={toolStates.colorOutput} readOnly className="bg-white/5 border-white/20 text-white" />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.colorOutput, "color")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2220,7 +2229,7 @@ export default function OneTapTools() {
           description: "Check color contrast ratios for accessibility",
           content: (
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="space-y-2">
                   <label className="text-white text-sm">Color 1:</label>
                   <div className="flex items-center space-x-2">
@@ -2261,7 +2270,7 @@ export default function OneTapTools() {
                 <div className="relative">
                   <Textarea value={toolStates.colorOutput} readOnly className="bg-white/5 border-white/20 text-white" />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.colorOutput, "contrast")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2309,7 +2318,7 @@ export default function OneTapTools() {
                 <div className="relative">
                   <Textarea value={toolStates.dateOutput} readOnly className="bg-white/5 border-white/20 text-white" />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.dateOutput, "date")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2342,7 +2351,7 @@ export default function OneTapTools() {
                 <div className="relative">
                   <Textarea value={toolStates.dateOutput} readOnly className="bg-white/5 border-white/20 text-white" />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.dateOutput, "age")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2359,7 +2368,7 @@ export default function OneTapTools() {
           description: "Calculate difference between two dates",
           content: (
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="space-y-2">
                   <label className="text-white text-sm">Start Date:</label>
                   <Input
@@ -2390,7 +2399,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.dateOutput, "datediff")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2462,7 +2471,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.lengthResult, "length")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2523,7 +2532,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.weightResult, "weight")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2578,7 +2587,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.tempResult, "temp")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2613,7 +2622,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.fileSizeResult, "filesize")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2674,7 +2683,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white font-mono text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.currencyResult, "currency")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2698,7 +2707,7 @@ export default function OneTapTools() {
           description: "Calculate aspect ratios from dimensions",
           content: (
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <Input
                   type="number"
                   placeholder="Width"
@@ -2725,7 +2734,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.imageResult, "aspect")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2742,7 +2751,7 @@ export default function OneTapTools() {
           description: "Calculate new dimensions maintaining aspect ratio",
           content: (
             <div className="space-y-4">
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                 <Input
                   type="number"
                   placeholder="Original Width"
@@ -2776,7 +2785,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.imageResult, "resize")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2813,7 +2822,7 @@ export default function OneTapTools() {
                 <div className="relative">
                   <Textarea value={toolStates.ipResult} readOnly className="bg-white/5 border-white/20 text-white" />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.ipResult, "ip")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2847,7 +2856,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.subnetResult, "subnet")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2882,7 +2891,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white text-center text-lg"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.portResult, "port")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2906,7 +2915,7 @@ export default function OneTapTools() {
           description: "Calculate compound interest",
           content: (
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <Input
                   type="number"
                   placeholder="Principal ($)"
@@ -2947,7 +2956,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.financeResult, "compound")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -2964,7 +2973,7 @@ export default function OneTapTools() {
           description: "Calculate loan payments",
           content: (
             <div className="space-y-4">
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                 <Input
                   type="number"
                   placeholder="Loan Amount ($)"
@@ -2998,7 +3007,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.financeResult, "loan")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -3015,7 +3024,7 @@ export default function OneTapTools() {
           description: "Calculate tips and split bills",
           content: (
             <div className="space-y-4">
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                 <Input
                   type="number"
                   placeholder="Bill Amount ($)"
@@ -3049,7 +3058,7 @@ export default function OneTapTools() {
                     className="bg-white/5 border-white/20 text-white"
                   />
                   <Button
-                    size="sm"
+                    size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.financeResult, "tip")}
                     className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
                   >
@@ -3083,25 +3092,25 @@ export default function OneTapTools() {
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10"></div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-8 min-h-screen flex flex-col">
+      <div className="relative z-10 container mx-auto px-4 py-6 sm:py-8 min-h-screen flex flex-col">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <div className="flex items-center justify-center mb-4">
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-2xl mr-4">
-              <Zap className="h-8 w-8 text-white" />
+            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 sm:p-3 rounded-2xl mr-3 sm:mr-4">
+              <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
             </div>
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               OneTap Tools
             </h1>
           </div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
             Your comprehensive toolkit with 50+ free tools for encoding, decoding, formatting, generating, and
             converting. Simple, fast, and beautiful tools at your fingertips.
           </p>
 
           {/* Search */}
-          <div className="max-w-md mx-auto relative">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          <div className="max-w-md mx-auto relative px-4">
+            <Search className="absolute left-7 top-3 h-4 w-4 text-gray-400" />
             <Input
               placeholder="Search tools..."
               value={searchTerm}
@@ -3112,48 +3121,51 @@ export default function OneTapTools() {
         </div>
 
         {/* Tools Categories */}
-        <div className="max-w-6xl mx-auto flex-1">
+        <div className="max-w-6xl mx-auto flex-1 px-4">
           <Tabs defaultValue="text" className="w-full">
-            <TabsList className="grid w-full grid-cols-5 lg:grid-cols-10 bg-white/10 mb-8">
-              {toolCategories.map((category) => (
-                <TabsTrigger
-                  key={category.id}
-                  value={category.id}
-                  className="data-[state=active]:bg-white/20 text-white text-xs"
-                >
-                  {category.title.split(" ")[0]}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            <div className="overflow-x-auto mb-8">
+              <TabsList className="flex w-max min-w-full bg-white/10 gap-1 p-1">
+                {toolCategories.map((category) => (
+                  <TabsTrigger
+                    key={category.id}
+                    value={category.id}
+                    className="data-[state=active]:bg-white/20 text-white text-xs sm:text-sm px-3 py-2 whitespace-nowrap flex-shrink-0"
+                  >
+                    <span className="hidden sm:inline">{category.title}</span>
+                    <span className="sm:hidden">{category.title.split(" ")[0]}</span>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
 
             {filteredCategories.map((category) => (
               <TabsContent key={category.id} value={category.id} className="space-y-6">
                 <div className="text-center mb-6">
-                  <h2 className="text-3xl font-bold text-white mb-2">{category.title}</h2>
-                  <p className="text-gray-300">{category.description}</p>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{category.title}</h2>
+                  <p className="text-gray-300 text-sm sm:text-base">{category.description}</p>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                   {category.tools.map((tool) => (
                     <Card key={tool.id} className="bg-white/10 backdrop-blur-lg border-white/20 shadow-2xl">
                       <Collapsible open={openSections[tool.id]} onOpenChange={() => toggleSection(tool.id)}>
                         <CollapsibleTrigger asChild>
-                          <CardHeader className="cursor-pointer hover:bg-white/5 transition-colors rounded-t-lg">
+                          <CardHeader className="cursor-pointer hover:bg-white/5 transition-colors rounded-t-lg p-4 sm:p-6">
                             <div className="flex items-center justify-between">
-                              <div className="text-left">
-                                <CardTitle className="text-white text-lg">{tool.title}</CardTitle>
-                                <CardDescription className="text-gray-300 text-sm">{tool.description}</CardDescription>
+                              <div className="text-left flex-1 min-w-0">
+                                <CardTitle className="text-white text-base sm:text-lg truncate">{tool.title}</CardTitle>
+                                <CardDescription className="text-gray-300 text-xs sm:text-sm line-clamp-2">{tool.description}</CardDescription>
                               </div>
                               {openSections[tool.id] ? (
-                                <ChevronUp className="h-4 w-4 text-gray-400" />
+                                <ChevronUp className="h-4 w-4 text-gray-400 flex-shrink-0 ml-2" />
                               ) : (
-                                <ChevronDown className="h-4 w-4 text-gray-400" />
+                                <ChevronDown className="h-4 w-4 text-gray-400 flex-shrink-0 ml-2" />
                               )}
                             </div>
                           </CardHeader>
                         </CollapsibleTrigger>
                         <CollapsibleContent>
-                          <CardContent className="pt-0">{tool.content}</CardContent>
+                          <CardContent className="pt-0 p-4 sm:p-6">{tool.content}</CardContent>
                         </CollapsibleContent>
                       </Collapsible>
                     </Card>
