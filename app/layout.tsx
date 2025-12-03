@@ -7,9 +7,9 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "1Tap Tools - All-in-One Developer Toolkit | 50+ Free Tools",
+  title: "1Tap Tools - All-in-One Developer Toolkit | 30+ Essential Tools",
   description:
-    "The ultimate developer toolkit with 50+ free tools for encoding, decoding, formatting, and generating. Base64, URL encoding, QR codes, JSON formatting, hash generation, password generator, and more. Simple, fast, and beautiful.",
+    "The ultimate developer toolkit with 30+ essential tools for encoding, decoding, formatting, and generating. Base64, URL encoding, QR codes, JSON formatting, hash generation, password generator, and more. Simple, fast, and beautiful.",
   generator: 'Next.js',
   keywords: [
     '1tap tools',
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   publisher: 'Darkmintis',
   metadataBase: new URL('https://onetap-tools.vercel.app'),
   openGraph: {
-    title: '1Tap Tools - All-in-One Developer Toolkit | 50+ Free Tools',
-    description: 'The ultimate developer toolkit with 50+ free tools. Simple, fast, and beautiful tools for encoding, decoding, formatting, and generating.',
+    title: '1Tap Tools - All-in-One Developer Toolkit | 30+ Essential Tools',
+    description: 'The ultimate developer toolkit with 30+ essential tools. Simple, fast, and beautiful tools for encoding, decoding, formatting, and generating.',
     url: 'https://onetap-tools.vercel.app',
     siteName: '1Tap Tools',
     images: [
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '1Tap Tools - All-in-One Developer Toolkit | 50+ Free Tools',
-    description: 'The ultimate developer toolkit with 50+ free tools. Simple, fast, and beautiful.',
+    title: '1Tap Tools - All-in-One Developer Toolkit | 30+ Essential Tools',
+    description: 'The ultimate developer toolkit with 30+ essential tools. Simple, fast, and beautiful.',
     images: ['/og-image.png'],
     creator: '@darkmintisog',
   },
@@ -75,8 +75,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
         {children}
         <Toaster />
       </body>

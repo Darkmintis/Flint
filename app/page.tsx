@@ -3121,7 +3121,7 @@ export default function OneTapTools() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-violet-950 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-violet-950 relative overflow-hidden flex flex-col">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
@@ -3145,10 +3145,10 @@ export default function OneTapTools() {
               1Tap Tools
             </h1>
           </div>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed">
-            <span className="inline-flex items-center gap-2">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed text-center">
+            <span className="flex items-center justify-center gap-2">
               <Rocket className="h-5 w-5 text-blue-400" />
-              Your ultimate developer toolkit with <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">50+ powerful tools</span> for encoding, decoding, formatting, generating, and converting.
+              Your ultimate developer toolkit with <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">30+ essential tools</span> for encoding, decoding, formatting, and generating.
             </span>
             <br/>
             <span className="text-sm sm:text-base text-gray-400 mt-2 flex items-center justify-center gap-2">
@@ -3179,7 +3179,7 @@ export default function OneTapTools() {
         </div>
 
         {/* All Tools - Flat Grid */}
-        <div className="max-w-7xl mx-auto flex-1 px-4 mb-12">
+        <div className="max-w-7xl mx-auto flex-1 px-4 pb-8">
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               All Tools
@@ -3241,7 +3241,7 @@ export default function OneTapTools() {
         )}
 
         {/* Minimal Sticky Footer */}
-        <footer className="mt-auto py-3 border-t border-white/10 bg-black/50 backdrop-blur-sm">
+        <footer className="w-full py-3 border-t border-white/10 bg-black/50 backdrop-blur-sm mt-auto">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-col items-center justify-center gap-2 text-xs text-gray-400">
               <div className="flex items-center gap-3">
