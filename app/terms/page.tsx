@@ -37,7 +37,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                Acceptance of Terms
+                <span>Acceptance of Terms</span>
               </h2>
               <p className="leading-relaxed">
                 By accessing and using 1Tap Tools, you accept and agree to be bound by these Terms of Service.
@@ -48,7 +48,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
-                Use of Services
+                <span>Use of Services</span>
               </h2>
               <p className="mb-3">
                 <strong className="text-purple-300">Free Access:</strong> All tools are provided free of charge for
@@ -67,7 +67,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-pink-400"></span>
-                Acceptable Use
+                <span>Acceptable Use</span>
               </h2>
               <p className="mb-3">You agree to use 1Tap Tools only for lawful purposes. You must not:</p>
               <ul className="space-y-2 ml-4">
@@ -82,7 +82,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
-                Disclaimer of Warranties
+                <span>Disclaimer of Warranties</span>
               </h2>
               <p className="mb-3 leading-relaxed">
                 1Tap Tools is provided "as is" and "as available" without any warranties of any kind, either
@@ -97,7 +97,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-400"></span>
-                Limitation of Liability
+                <span>Limitation of Liability</span>
               </h2>
               <p className="leading-relaxed">
                 To the maximum extent permitted by law, 1Tap Tools and its creators shall not be liable for any
@@ -109,7 +109,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400"></span>
-                Data Accuracy
+                <span>Data Accuracy</span>
               </h2>
               <p className="leading-relaxed">
                 While we strive for accuracy in all tools, we make no guarantees about the correctness of results.
@@ -120,7 +120,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                Intellectual Property
+                <span>Intellectual Property</span>
               </h2>
               <p className="leading-relaxed">
                 The 1Tap Tools website, design, and code are protected by copyright and other intellectual property
@@ -131,7 +131,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
-                Changes to Terms
+                <span>Changes to Terms</span>
               </h2>
               <p className="leading-relaxed">
                 We reserve the right to modify these terms at any time. Changes will be posted on this page with
@@ -142,7 +142,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                Governing Law
+                <span>Governing Law</span>
               </h2>
               <p className="leading-relaxed">
                 These terms shall be governed by and construed in accordance with applicable laws, without regard
@@ -153,7 +153,7 @@ export default function TermsOfService() {
             <section className="p-6 rounded-2xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
-                Contact
+                <span>Contact</span>
               </h2>
               <p className="leading-relaxed">
                 For questions about these Terms of Service, please contact us at{" "}

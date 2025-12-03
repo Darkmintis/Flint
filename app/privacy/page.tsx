@@ -37,7 +37,7 @@ export default function PrivacyPolicy() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                Your Privacy Matters
+                <span>Your Privacy Matters</span>
               </h2>
               <p className="leading-relaxed">
                 At 1Tap Tools, we are committed to protecting your privacy. All tools on this platform are designed
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
-                Data Processing
+                <span>Data Processing</span>
               </h2>
               <p className="mb-3">
                 <strong className="text-blue-300">Client-Side Processing:</strong> All conversions, transformations, and
@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400"></span>
-                Information We Don't Collect
+                <span>Information We Don&apos;t Collect</span>
               </h2>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gray-500"></span>Personal information (name, email, etc.)</li>
@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-pink-400"></span>
-                Third-Party Services
+                <span>Third-Party Services</span>
               </h2>
               <p className="leading-relaxed">
                 We do not integrate any third-party analytics, advertising, or tracking services. The website is
@@ -92,7 +92,7 @@ export default function PrivacyPolicy() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                Your Rights
+                <span>Your Rights</span>
               </h2>
               <p className="leading-relaxed">
                 Since we don't collect any personal data, there is no data to access, modify, or delete. You have
@@ -103,7 +103,7 @@ export default function PrivacyPolicy() {
             <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
-                Changes to Privacy Policy
+                <span>Changes to Privacy Policy</span>
               </h2>
               <p className="leading-relaxed">
                 We may update this privacy policy from time to time. Any changes will be posted on this page with
@@ -114,7 +114,7 @@ export default function PrivacyPolicy() {
             <section className="p-6 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
               <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                Contact
+                <span>Contact</span>
               </h2>
               <p className="leading-relaxed">
                 If you have any questions about this privacy policy, please contact us at{" "}
