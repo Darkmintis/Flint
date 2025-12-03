@@ -1,13 +1,14 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronDown, ChevronUp, Copy, Check, Zap, Search, Rocket, Sparkles, Shield, Heart, Clock } from "lucide-react"
+import { ChevronDown, ChevronUp, Copy, Check, Zap, Search, Rocket, Sparkles, Shield, Heart, Clock, ArrowUp } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useIsMobile } from "@/hooks/use-mobile"
 
@@ -15,9 +16,23 @@ export default function OneTapTools() {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({})
   const [searchTerm, setSearchTerm] = useState("")
-  const [activeCategory, setActiveCategory] = useState("text")
+  const [activeCategory, setActiveCategory] = useState("encode-decode")
+  const [showBackToTop, setShowBackToTop] = useState(false)
   const { toast } = useToast()
   const isMobile = useIsMobile()
+
+  // Handle scroll for back to top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   // Helper function for responsive button size
   const getButtonSize = () => (isMobile ? "default" : "sm")
@@ -1220,8 +1235,8 @@ export default function OneTapTools() {
   const toolCategories = [
     {
       id: "text",
-      title: "Text Tools",
-      description: "Manipulate and analyze text",
+      title: "Text & Content",
+      description: "Transform, analyze, and manipulate text with powerful text processing tools",
       tools: [
         {
           id: "word-count",
@@ -1415,8 +1430,8 @@ export default function OneTapTools() {
     },
     {
       id: "conversion",
-      title: "Conversion Tools",
-      description: "Convert between different formats",
+      title: "Encode & Decode",
+      description: "Convert between different encoding formats including Base64, URL, Binary, Hex, and Morse code",
       tools: [
         {
           id: "base64",
@@ -1619,8 +1634,8 @@ export default function OneTapTools() {
     },
     {
       id: "generators",
-      title: "Generator Tools",
-      description: "Generate passwords, UUIDs, and more",
+      title: "Generators",
+      description: "Generate QR codes, passwords, UUIDs, Lorem Ipsum, slugs, random data, and color palettes",
       tools: [
         {
           id: "qr",
@@ -3167,8 +3182,9 @@ export default function OneTapTools() {
         {/* Tools Categories */}
         <div className="max-w-7xl mx-auto flex-1 px-4">
           <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
-            <div className="overflow-x-auto mb-8 pb-2">
-              <TabsList className="flex w-max min-w-full bg-white/10 backdrop-blur-md gap-2 p-2 rounded-2xl shadow-2xl border border-white/10">
+            <div className="sticky top-0 z-40 bg-gradient-to-b from-slate-950 to-slate-950/95 backdrop-blur-xl pb-4 mb-4 shadow-2xl">
+              <div className="overflow-x-auto pb-2">
+                <TabsList className="flex w-max min-w-full bg-white/10 backdrop-blur-md gap-2 p-2 rounded-2xl shadow-2xl border border-white/10">
                 {toolCategories.map((category) => (
                   <TabsTrigger
                     key={category.id}
@@ -3180,6 +3196,7 @@ export default function OneTapTools() {
                   </TabsTrigger>
                 ))}
               </TabsList>
+              </div>
             </div>
 
             {filteredCategories.map((category) => (
@@ -3232,22 +3249,120 @@ export default function OneTapTools() {
           </Tabs>
         </div>
 
-        {/* Enhanced Footer */}
-        <footer className="mt-20 py-8 border-t border-white/10 bg-black/20 backdrop-blur-sm">
-          <div className="text-center">
-            <p className="text-gray-400 mb-2 text-sm sm:text-base flex items-center justify-center gap-2">
-              Built with <Heart className="h-4 w-4 text-red-400 fill-red-400 animate-pulse" /> for developers, designers, and creators worldwide
-            </p>
-            <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
-              <span>50+ Tools</span>
-              <span>•</span>
-              <span>100% Free</span>
-              <span>•</span>
-              <span>No Sign-up Required</span>
-              <span>•</span>
-              <span>Privacy First</span>
+        {/* Back to Top Button */}
+        {showBackToTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
+            aria-label="Back to top"
+          >
+            <ArrowUp className="h-5 w-5 group-hover:animate-bounce" />
+          </button>
+        )}
+
+        {/* Enhanced Professional Footer */}
+        <footer className="mt-20 border-t border-white/10 bg-gradient-to-b from-black/20 to-black/40 backdrop-blur-md">
+          <div className="max-w-7xl mx-auto px-4 py-12">
+            {/* Footer Content */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+              {/* Brand Section */}
+              <div className="md:col-span-2">
+                <div className="flex items-center gap-2 mb-4">
+                  <Zap className="h-6 w-6 text-blue-400" />
+                  <h3 className="text-xl font-bold text-white">1Tap Tools</h3>
+                </div>
+                <p className="text-gray-400 text-sm mb-4 max-w-md">
+                  Your ultimate developer toolkit with 50+ powerful tools for encoding, decoding, formatting, and generating. 
+                  All processing happens in your browser - fast, secure, and private.
+                </p>
+                <div className="flex items-center gap-2">
+                  <Heart className="h-4 w-4 text-red-400 fill-red-400 animate-pulse" />
+                  <span className="text-sm text-gray-400">Built for developers worldwide</span>
+                </div>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h4 className="text-white font-semibold mb-4">Resources</h4>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <Link href="https://github.com/Darkmintis/OneTap-Tools" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                      GitHub
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="https://github.com/Darkmintis/OneTap-Tools#readme" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                      Documentation
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="https://github.com/Darkmintis/OneTap-Tools/issues" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                      Report Issue
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="https://github.com/Darkmintis/OneTap-Tools/issues/new" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                      Feature Request
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Legal */}
+              <div>
+                <h4 className="text-white font-semibold mb-4">Legal</h4>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <Link href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <span className="text-gray-500">No Cookies</span>
+                  </li>
+                  <li>
+                    <span className="text-gray-500">No Tracking</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <p className="text-gray-600 text-xs mt-3">© 2025 Darkmintis • 1Tap Tools</p>
+
+            {/* Features Badges */}
+            <div className="border-t border-white/10 pt-8 mb-8">
+              <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
+                  <Sparkles className="h-3 w-3 text-blue-400" />
+                  <span className="text-gray-300">50+ Tools</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
+                  <Shield className="h-3 w-3 text-green-400" />
+                  <span className="text-gray-300">100% Privacy</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
+                  <Clock className="h-3 w-3 text-purple-400" />
+                  <span className="text-gray-300">Always Free</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
+                  <Rocket className="h-3 w-3 text-orange-400" />
+                  <span className="text-gray-300">No Sign-up</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-center border-t border-white/10 pt-8">
+              <p className="text-gray-500 text-sm">
+                © 2025 <span className="text-gray-400 font-medium">Darkmintis</span> • 1Tap Tools • All Rights Reserved
+              </p>
+              <p className="text-gray-600 text-xs mt-2">
+                All tools process data locally in your browser. No data is sent to any server.
+              </p>
+            </div>
           </div>
         </footer>
       </div>
