@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { ChevronDown, ChevronUp, Copy, Check, Zap, Search, Rocket, Sparkles, Shield, Clock, ArrowUp } from "lucide-react"
+import { ChevronDown, ChevronUp, Copy, Check, Zap, Search, Rocket, Sparkles, Shield, Clock, ArrowUp, Star, Command, Code2, Palette, Hash, Globe, Terminal } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useIsMobile } from "@/hooks/use-mobile"
 
@@ -3121,137 +3121,250 @@ export default function OneTapTools() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-violet-950 relative overflow-hidden flex flex-col">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
-        <div className="absolute w-96 h-96 bg-purple-500/20 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" style={{animationDelay: '2s'}}></div>
+    <div className="min-h-screen bg-[#030014] relative overflow-hidden flex flex-col">
+      {/* Premium Animated Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {/* Gradient mesh background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#0a0a1f] to-[#0f0720]"></div>
+        
+        {/* Animated gradient orbs */}
+        <div className="absolute w-[600px] h-[600px] bg-gradient-to-r from-blue-600/30 to-cyan-500/20 rounded-full blur-[120px] -top-64 -left-64 animate-float"></div>
+        <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-purple-600/25 to-pink-500/15 rounded-full blur-[100px] -bottom-48 -right-48 animate-float-delayed"></div>
+        <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-violet-600/20 to-fuchsia-500/10 rounded-full blur-[80px] top-1/3 left-1/4 animate-float-slow"></div>
+        <div className="absolute w-[300px] h-[300px] bg-gradient-to-r from-indigo-500/15 to-blue-400/10 rounded-full blur-[60px] bottom-1/4 right-1/3 animate-breathe"></div>
+        
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"></div>
+        
+        {/* Noise texture overlay */}
+        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml,%3Csvg viewBox=%270 0 256 256%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27noise%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.8%27 numOctaves=%274%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23noise)%27/%3E%3C/svg%3E')]"></div>
+        
+        {/* Radial gradient overlay for depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.1)_0%,transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(147,51,234,0.08)_0%,transparent_50%)]"></div>
       </div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE2YzAgMi4yMS0xLjc5IDQtNCA0cy00LTEuNzktNC00IDEuNzktNCA0LTQgNCAxLjc5IDQgNHptLTQgMTJjMi4yMSAwIDQgMS43OSA0IDRzLTEuNzkgNC00IDQtNC0xLjc5LTQtNCAxLjc5LTQgNC00eiIvPjwvZz48L2c+PC9zdmc+')] opacity-40"></div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-6 sm:py-8 min-h-screen flex flex-col">
-        {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <div className="flex items-center justify-center mb-4 animate-fade-in">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-75"></div>
-              <div className="relative bg-gradient-to-r from-blue-500 to-purple-600 p-2 sm:p-3 rounded-2xl mr-3 sm:mr-4 transform group-hover:scale-110 transition-transform">
-                <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+      <div className="relative z-10 container mx-auto px-4 py-6 sm:py-10 min-h-screen flex flex-col">
+        {/* Premium Header */}
+        <header className="text-center mb-10 sm:mb-16">
+          {/* Logo and Title */}
+          <div className="flex items-center justify-center mb-6 animate-fade-in">
+            <div className="relative group cursor-pointer">
+              {/* Outer glow ring */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl opacity-50 blur-xl group-hover:opacity-75 group-hover:blur-2xl transition-all duration-500"></div>
+              {/* Inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-md opacity-75"></div>
+              {/* Icon container */}
+              <div className="relative bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-3 sm:p-4 rounded-2xl mr-3 sm:mr-4 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-2xl">
+                <Zap className="h-7 w-7 sm:h-9 sm:w-9 text-white drop-shadow-lg" />
               </div>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:scale-105 transition-transform cursor-default">
-              1Tap Tools
-            </h1>
+            <div>
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black gradient-text-animated tracking-tight">
+                1Tap Tools
+              </h1>
+              <div className="flex items-center justify-center gap-2 mt-1">
+                <Star className="h-3 w-3 text-yellow-400 fill-yellow-400" />
+                <span className="text-xs text-gray-400 font-medium tracking-wider uppercase">Developer Toolkit</span>
+                <Star className="h-3 w-3 text-yellow-400 fill-yellow-400" />
+              </div>
+            </div>
           </div>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed text-center">
-            <span className="flex items-center justify-center gap-2">
-              <Rocket className="h-5 w-5 text-blue-400" />
-              Your ultimate developer toolkit with <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">30+ essential tools</span> for encoding, decoding, formatting, and generating.
-            </span>
-            <br/>
-            <span className="text-sm sm:text-base text-gray-400 mt-2 flex items-center justify-center gap-2">
-              <Sparkles className="h-3 w-3" /> Simple • <Clock className="h-3 w-3" /> Fast • <Sparkles className="h-3 w-3" /> Beautiful • <Shield className="h-3 w-3" /> Free Forever
-            </span>
-          </p>
+          
+          {/* Tagline with icons */}
+          <div className="animate-fade-in" style={{animationDelay: '0.1s'}}>
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-6 px-4 leading-relaxed">
+              <span className="flex items-center justify-center gap-3 flex-wrap">
+                <Rocket className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
+                <span>Your ultimate toolkit with</span>
+                <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 animate-shimmer px-1">30+ essential tools</span>
+              </span>
+            </p>
+            
+            {/* Feature badges */}
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-blue-500/30 transition-all duration-300 group">
+                <Sparkles className="h-3.5 w-3.5 text-blue-400 group-hover:text-blue-300" />
+                <span className="text-xs sm:text-sm text-gray-300 font-medium">Simple</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-purple-500/30 transition-all duration-300 group">
+                <Clock className="h-3.5 w-3.5 text-purple-400 group-hover:text-purple-300" />
+                <span className="text-xs sm:text-sm text-gray-300 font-medium">Lightning Fast</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-pink-500/30 transition-all duration-300 group">
+                <Palette className="h-3.5 w-3.5 text-pink-400 group-hover:text-pink-300" />
+                <span className="text-xs sm:text-sm text-gray-300 font-medium">Beautiful</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-green-500/30 transition-all duration-300 group">
+                <Shield className="h-3.5 w-3.5 text-green-400 group-hover:text-green-300" />
+                <span className="text-xs sm:text-sm text-gray-300 font-medium">Free Forever</span>
+              </div>
+            </div>
+          </div>
 
-          {/* Enhanced Search */}
-          <div className="max-w-lg mx-auto relative px-4">
+          {/* Premium Search Bar */}
+          <div className="max-w-2xl mx-auto relative px-4 animate-fade-in" style={{animationDelay: '0.2s'}}>
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-md group-focus-within:blur-lg transition-all"></div>
+              {/* Search glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-0 group-focus-within:opacity-100 transition-all duration-500"></div>
               <div className="relative">
-                <Search className="absolute left-4 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-blue-400 transition-colors" />
+                <div className="absolute left-5 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                  <Search className="h-5 w-5 text-gray-500 group-focus-within:text-blue-400 transition-colors duration-300" />
+                  <div className="hidden sm:flex items-center gap-1 px-2 py-0.5 rounded bg-white/5 border border-white/10">
+                    <Command className="h-3 w-3 text-gray-500" />
+                    <span className="text-xs text-gray-500">K</span>
+                  </div>
+                </div>
                 <Input
                   placeholder="Search tools... (try 'json', 'base64', 'password')" 
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-gray-400 pl-12 pr-4 py-6 text-base rounded-xl focus:bg-white/15 focus:border-blue-400/50 transition-all shadow-xl"
+                  className="w-full h-14 sm:h-16 bg-white/[0.03] backdrop-blur-xl border-white/10 text-white placeholder:text-gray-500 pl-14 sm:pl-24 pr-6 text-base sm:text-lg rounded-2xl focus:bg-white/[0.06] focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-2xl shadow-black/20"
                 />
               </div>
             </div>
             {searchTerm && (
-              <p className="text-sm text-gray-400 mt-2 text-center">
-                Found {filteredTools.length} tools
+              <p className="text-sm text-gray-400 mt-3 text-center animate-fade-in">
+                <span className="text-blue-400 font-semibold">{filteredTools.length}</span> tools found
               </p>
             )}
           </div>
-        </div>
+        </header>
 
-        {/* All Tools - Flat Grid */}
-        <div className="max-w-7xl mx-auto flex-1 px-4 pb-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              All Tools
+        {/* Tools Section */}
+        <main className="max-w-7xl mx-auto flex-1 w-full px-2 sm:px-4 pb-8">
+          {/* Section Header */}
+          <div className="text-center mb-10 animate-fade-in" style={{animationDelay: '0.3s'}}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 mb-4">
+              <Code2 className="h-4 w-4 text-blue-400" />
+              <span className="text-sm font-medium text-blue-300">Developer Essentials</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              <span className="gradient-text">All Tools</span>
             </h2>
-            <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto">
-              {searchTerm ? `Showing ${filteredTools.length} matching tools` : `${allTools.length} powerful tools at your fingertips`}
+            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+              {searchTerm 
+                ? `Showing ${filteredTools.length} matching tools` 
+                : `${allTools.length} powerful tools at your fingertips — click to expand`}
             </p>
           </div>
 
-          <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {/* Tools Grid */}
+          <div className="grid gap-4 sm:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
             {filteredTools.map((tool, index) => (
               <Card 
                 key={tool.uniqueId} 
-                className="bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 hover:scale-[1.02] hover:border-blue-400/50 hover:bg-black/50 group"
-                style={{animationDelay: `${index * 20}ms`}}
+                className="group glass-premium rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/10 card-glow animate-card"
+                style={{animationDelay: `${index * 30}ms`}}
               >
                 <Collapsible open={openTools[tool.uniqueId]} onOpenChange={() => toggleTool(tool.uniqueId)}>
                   <CollapsibleTrigger asChild>
-                    <CardHeader className="cursor-pointer hover:bg-white/5 transition-all duration-300 rounded-t-lg p-4 sm:p-6 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                      <div className="flex items-center justify-between relative z-10">
-                        <div className="text-left flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <CardTitle className="text-white text-base sm:text-lg font-semibold group-hover:text-blue-300 transition-colors">{tool.title}</CardTitle>
-                          </div>
-                          <CardDescription className="text-gray-400 text-xs sm:text-sm line-clamp-2">{tool.description}</CardDescription>
-                          <div className="mt-2">
-                            <span className="text-xs text-blue-400/70 bg-blue-500/10 px-2 py-1 rounded">{tool.category}</span>
+                    <CardHeader className="cursor-pointer p-5 sm:p-6 relative overflow-hidden transition-all duration-300">
+                      {/* Hover gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      {/* Header Content */}
+                      <div className="flex items-start justify-between relative z-10 gap-3">
+                        <div className="flex-1 min-w-0">
+                          {/* Tool Title */}
+                          <CardTitle className="text-white text-base sm:text-lg font-semibold mb-1.5 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-300 group-hover:to-purple-300 transition-all duration-300">
+                            {tool.title}
+                          </CardTitle>
+                          
+                          {/* Tool Description */}
+                          <CardDescription className="text-gray-400 text-sm line-clamp-2 leading-relaxed">
+                            {tool.description}
+                          </CardDescription>
+                          
+                          {/* Category Badge */}
+                          <div className="mt-3 inline-flex items-center gap-1.5">
+                            <span className="text-xs font-medium text-blue-400/80 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/20">
+                              {tool.category}
+                            </span>
                           </div>
                         </div>
-                        <div className="flex-shrink-0 ml-3 p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
-                          {openTools[tool.id] ? (
+                        
+                        {/* Expand/Collapse Icon */}
+                        <div className="flex-shrink-0 p-2.5 rounded-xl bg-white/5 group-hover:bg-gradient-to-br group-hover:from-blue-500/20 group-hover:to-purple-500/20 border border-white/5 group-hover:border-blue-500/30 transition-all duration-300">
+                          {openTools[tool.uniqueId] ? (
                             <ChevronUp className="h-4 w-4 text-blue-400" />
                           ) : (
-                            <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-blue-400 transition-colors" />
+                            <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" />
                           )}
                         </div>
                       </div>
                     </CardHeader>
                   </CollapsibleTrigger>
+                  
                   <CollapsibleContent>
-                    <CardContent className="pt-0 p-4 sm:p-6">{tool.content}</CardContent>
+                    <CardContent className="pt-0 p-5 sm:p-6 border-t border-white/5">
+                      {tool.content}
+                    </CardContent>
                   </CollapsibleContent>
                 </Collapsible>
               </Card>
             ))}
           </div>
-        </div>
+          
+          {/* Empty State */}
+          {filteredTools.length === 0 && (
+            <div className="text-center py-20">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/5 border border-white/10 mb-6">
+                <Search className="h-8 w-8 text-gray-500" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">No tools found</h3>
+              <p className="text-gray-400">Try adjusting your search terms</p>
+            </div>
+          )}
+        </main>
 
         {/* Back to Top Button */}
         {showBackToTop && (
           <button
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
+            className="fixed bottom-24 sm:bottom-8 right-6 sm:right-8 z-50 p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110 group animate-fade-in"
             aria-label="Back to top"
           >
-            <ArrowUp className="h-5 w-5 group-hover:animate-bounce" />
+            <ArrowUp className="h-5 w-5 group-hover:-translate-y-1 transition-transform duration-300" />
           </button>
         )}
 
-        {/* Minimal Sticky Footer */}
-        <footer className="w-full py-3 border-t border-white/10 bg-black/50 backdrop-blur-sm mt-auto">
+        {/* Premium Footer */}
+        <footer className="w-full py-4 sm:py-5 border-t border-white/5 bg-black/30 backdrop-blur-xl mt-auto">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="flex flex-col items-center justify-center gap-2 text-xs text-gray-400">
-              <div className="flex items-center gap-3">
-                <Link href="/privacy" className="hover:text-blue-400 transition-colors">Privacy</Link>
-                <span>•</span>
-                <Link href="/terms" className="hover:text-blue-400 transition-colors">Terms</Link>
-                <span>•</span>
-                <a href="mailto:contact.darkmintis@gmail.com" className="hover:text-blue-400 transition-colors">Contact</a>
+            <div className="flex flex-col items-center justify-center gap-3">
+              {/* Navigation Links */}
+              <div className="flex items-center gap-6">
+                <Link 
+                  href="/privacy" 
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
+                >
+                  Privacy
+                </Link>
+                <span className="text-gray-600">•</span>
+                <Link 
+                  href="/terms" 
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
+                >
+                  Terms
+                </Link>
+                <span className="text-gray-600">•</span>
+                <a 
+                  href="mailto:contact.darkmintis@gmail.com" 
+                  className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
+                >
+                  Contact
+                </a>
               </div>
-              <div className="text-gray-500">© 2025 Darkmintis • 1Tap Tools</div>
+              
+              {/* Copyright */}
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <span>© 2025</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-medium">Darkmintis</span>
+                <span>•</span>
+                <span>1Tap Tools</span>
+              </div>
             </div>
           </div>
         </footer>
