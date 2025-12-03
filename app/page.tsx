@@ -7,16 +7,14 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronDown, ChevronUp, Copy, Check, Zap, Search, Rocket, Sparkles, Shield, Heart, Clock, ArrowUp } from "lucide-react"
+import { ChevronDown, ChevronUp, Copy, Check, Zap, Search, Rocket, Sparkles, Shield, Clock, ArrowUp } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function OneTapTools() {
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
+  const [openTools, setOpenTools] = useState<Record<string, boolean>>({})
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({})
   const [searchTerm, setSearchTerm] = useState("")
-  const [activeCategory, setActiveCategory] = useState("encode-decode")
   const [showBackToTop, setShowBackToTop] = useState(false)
   const { toast } = useToast()
   const isMobile = useIsMobile()
@@ -32,6 +30,10 @@ export default function OneTapTools() {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const toggleTool = (id: string) => {
+    setOpenTools((prev) => ({ ...prev, [id]: !prev[id] }))
   }
 
   // Helper function for responsive button size
@@ -106,18 +108,6 @@ export default function OneTapTools() {
 
   const updateToolState = (key: string, value: any) => {
     setToolStates((prev) => ({ ...prev, [key]: value }))
-  }
-
-  const toggleSection = (section: string) => {
-    setOpenSections((prev) => {
-      // Close all other sections when opening a new one
-      const newState: Record<string, boolean> = {}
-      for (const key of Object.keys(prev)) {
-        newState[key] = false
-      }
-      newState[section] = !prev[section]
-      return newState
-    })
   }
 
   const copyToClipboard = async (text: string, key: string) => {
@@ -225,7 +215,7 @@ export default function OneTapTools() {
 
     extractUrls: () => {
       const urlRegex =
-        /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/g
+        /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/g
       const urls = toolStates.textInput.match(urlRegex) || []
       updateToolState("textOutput", urls.join("\n"))
     },
@@ -1236,7 +1226,7 @@ export default function OneTapTools() {
     {
       id: "text",
       title: "Text & Content",
-      description: "Transform, analyze, and manipulate text with powerful text processing tools",
+      description: "Transform text, generate content, and encode/decode data",
       tools: [
         {
           id: "word-count",
@@ -1429,9 +1419,9 @@ export default function OneTapTools() {
       ],
     },
     {
-      id: "conversion",
-      title: "Encode & Decode",
-      description: "Convert between different encoding formats including Base64, URL, Binary, Hex, and Morse code",
+      id: "webdev",
+      title: "Web Development",
+      description: "Format code, validate data, generate hashes, and work with colors",
       tools: [
         {
           id: "base64",
@@ -1633,9 +1623,9 @@ export default function OneTapTools() {
       ],
     },
     {
-      id: "generators",
-      title: "Generators",
-      description: "Generate QR codes, passwords, UUIDs, Lorem Ipsum, slugs, random data, and color palettes",
+      id: "converters",
+      title: "Calculators & Converters",
+      description: "Convert units, calculate dates, finances, image dimensions, and network tools",
       tools: [
         {
           id: "qr",
@@ -1679,8 +1669,9 @@ export default function OneTapTools() {
           content: (
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
-                <label className="text-white">Length:</label>
+                <label htmlFor="password-length" className="text-white">Length:</label>
                 <Input
+                  id="password-length"
                   type="number"
                   min="4"
                   max="128"
@@ -1751,8 +1742,9 @@ export default function OneTapTools() {
           content: (
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
-                <label className="text-white">Sentences:</label>
+                <label htmlFor="lorem-sentences" className="text-white">Sentences:</label>
                 <Input
+                  id="lorem-sentences"
                   type="number"
                   min="1"
                   max="20"
@@ -1876,7 +1868,7 @@ export default function OneTapTools() {
               {toolStates.colorOutput && (
                 <div className="space-y-2">
                   {toolStates.colorOutput.split("\n").map((color: string, index: number) => (
-                    <div key={index} className="flex items-center space-x-2">
+                    <div key={`color-palette-${color}-${index}`} className="flex items-center space-x-2">
                       <div className="w-8 h-8 rounded border border-white/20" style={{ backgroundColor: color }}></div>
                       <Input
                         value={color}
@@ -2372,8 +2364,9 @@ export default function OneTapTools() {
           content: (
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-white text-sm">Birth Date:</label>
+                <label htmlFor="birth-date" className="text-white text-sm">Birth Date:</label>
                 <Input
+                  id="birth-date"
                   type="date"
                   value={toolStates.birthDate}
                   onChange={(e) => updateToolState("birthDate", e.target.value)}
@@ -2406,8 +2399,9 @@ export default function OneTapTools() {
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="space-y-2">
-                  <label className="text-white text-sm">Start Date:</label>
+                  <label htmlFor="start-date" className="text-white text-sm">Start Date:</label>
                   <Input
+                    id="start-date"
                     type="date"
                     value={toolStates.date1}
                     onChange={(e) => updateToolState("date1", e.target.value)}
@@ -2415,8 +2409,9 @@ export default function OneTapTools() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-white text-sm">End Date:</label>
+                  <label htmlFor="end-date" className="text-white text-sm">End Date:</label>
                   <Input
+                    id="end-date"
                     type="date"
                     value={toolStates.date2}
                     onChange={(e) => updateToolState("date2", e.target.value)}
@@ -3109,17 +3104,21 @@ export default function OneTapTools() {
     },
   ]
 
-  // Filter tools based on search
-  const filteredCategories = toolCategories
-    .map((category) => ({
-      ...category,
-      tools: category.tools.filter(
-        (tool) =>
-          tool.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          tool.description.toLowerCase().includes(searchTerm.toLowerCase()),
-      ),
+  // Flatten all tools from all categories into a single array
+  const allTools = toolCategories.flatMap((category, catIndex) => 
+    category.tools.map((tool, toolIndex) => ({ 
+      ...tool, 
+      category: category.title,
+      uniqueId: `${category.id}-${tool.id}-${catIndex}-${toolIndex}` // Create unique ID
     }))
-    .filter((category) => category.tools.length > 0)
+  )
+
+  // Filter tools based on search
+  const filteredTools = allTools.filter((tool) =>
+    tool.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    tool.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    tool.category.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-violet-950 relative overflow-hidden">
@@ -3173,80 +3172,61 @@ export default function OneTapTools() {
             </div>
             {searchTerm && (
               <p className="text-sm text-gray-400 mt-2 text-center">
-                Found {filteredCategories.reduce((acc, cat) => acc + cat.tools.length, 0)} tools
+                Found {filteredTools.length} tools
               </p>
             )}
           </div>
         </div>
 
-        {/* Tools Categories */}
-        <div className="max-w-7xl mx-auto flex-1 px-4">
-          <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
-            <div className="sticky top-0 z-40 bg-gradient-to-b from-slate-950 to-slate-950/95 backdrop-blur-xl pb-4 mb-4 shadow-2xl">
-              <div className="overflow-x-auto pb-2">
-                <TabsList className="flex w-max min-w-full bg-white/10 backdrop-blur-md gap-2 p-2 rounded-2xl shadow-2xl border border-white/10">
-                {toolCategories.map((category) => (
-                  <TabsTrigger
-                    key={category.id}
-                    value={category.id}
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg text-gray-300 hover:text-white text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap flex-shrink-0 rounded-xl transition-all duration-300 font-medium hover:bg-white/10"
-                  >
-                    <span className="hidden sm:inline">{category.title}</span>
-                    <span className="sm:hidden">{category.title.split(" ")[0]}</span>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              </div>
-            </div>
+        {/* All Tools - Flat Grid */}
+        <div className="max-w-7xl mx-auto flex-1 px-4 mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              All Tools
+            </h2>
+            <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto">
+              {searchTerm ? `Showing ${filteredTools.length} matching tools` : `${allTools.length} powerful tools at your fingertips`}
+            </p>
+          </div>
 
-            {filteredCategories.map((category) => (
-              <TabsContent key={category.id} value={category.id} className="space-y-6 animate-fade-in">
-                <div className="text-center mb-8">
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    {category.title}
-                  </h2>
-                  <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto">{category.description}</p>
-                  <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
-                    <span className="text-xs text-gray-400">{category.tools.length} tools available</span>
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                  {category.tools.map((tool, index) => (
-                    <Card 
-                      key={tool.id} 
-                      className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border-white/20 shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:scale-[1.02] hover:border-blue-400/30 group"
-                      style={{animationDelay: `${index * 50}ms`}}
-                    >
-                      <Collapsible open={openSections[tool.id]} onOpenChange={() => toggleSection(tool.id)}>
-                        <CollapsibleTrigger asChild>
-                          <CardHeader className="cursor-pointer hover:bg-white/10 transition-all duration-300 rounded-t-lg p-4 sm:p-6 relative overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <div className="flex items-center justify-between relative z-10">
-                              <div className="text-left flex-1 min-w-0">
-                                <CardTitle className="text-white text-base sm:text-lg font-semibold mb-1 group-hover:text-blue-300 transition-colors">{tool.title}</CardTitle>
-                                <CardDescription className="text-gray-400 text-xs sm:text-sm line-clamp-2">{tool.description}</CardDescription>
-                              </div>
-                              <div className="flex-shrink-0 ml-3 p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
-                                {openSections[tool.id] ? (
-                                  <ChevronUp className="h-4 w-4 text-blue-400" />
-                                ) : (
-                                  <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-blue-400 transition-colors" />
-                                )}
-                              </div>
-                            </div>
-                          </CardHeader>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <CardContent className="pt-0 p-4 sm:p-6">{tool.content}</CardContent>
-                        </CollapsibleContent>
-                      </Collapsible>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
+          <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {filteredTools.map((tool, index) => (
+              <Card 
+                key={tool.uniqueId} 
+                className="bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 hover:scale-[1.02] hover:border-blue-400/50 hover:bg-black/50 group"
+                style={{animationDelay: `${index * 20}ms`}}
+              >
+                <Collapsible open={openTools[tool.uniqueId]} onOpenChange={() => toggleTool(tool.uniqueId)}>
+                  <CollapsibleTrigger asChild>
+                    <CardHeader className="cursor-pointer hover:bg-white/5 transition-all duration-300 rounded-t-lg p-4 sm:p-6 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="flex items-center justify-between relative z-10">
+                        <div className="text-left flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <CardTitle className="text-white text-base sm:text-lg font-semibold group-hover:text-blue-300 transition-colors">{tool.title}</CardTitle>
+                          </div>
+                          <CardDescription className="text-gray-400 text-xs sm:text-sm line-clamp-2">{tool.description}</CardDescription>
+                          <div className="mt-2">
+                            <span className="text-xs text-blue-400/70 bg-blue-500/10 px-2 py-1 rounded">{tool.category}</span>
+                          </div>
+                        </div>
+                        <div className="flex-shrink-0 ml-3 p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
+                          {openTools[tool.id] ? (
+                            <ChevronUp className="h-4 w-4 text-blue-400" />
+                          ) : (
+                            <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-blue-400 transition-colors" />
+                          )}
+                        </div>
+                      </div>
+                    </CardHeader>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <CardContent className="pt-0 p-4 sm:p-6">{tool.content}</CardContent>
+                  </CollapsibleContent>
+                </Collapsible>
+              </Card>
             ))}
-          </Tabs>
+          </div>
         </div>
 
         {/* Back to Top Button */}
@@ -3260,108 +3240,18 @@ export default function OneTapTools() {
           </button>
         )}
 
-        {/* Enhanced Professional Footer */}
-        <footer className="mt-20 border-t border-white/10 bg-gradient-to-b from-black/20 to-black/40 backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-4 py-12">
-            {/* Footer Content */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-              {/* Brand Section */}
-              <div className="md:col-span-2">
-                <div className="flex items-center gap-2 mb-4">
-                  <Zap className="h-6 w-6 text-blue-400" />
-                  <h3 className="text-xl font-bold text-white">1Tap Tools</h3>
-                </div>
-                <p className="text-gray-400 text-sm mb-4 max-w-md">
-                  Your ultimate developer toolkit with 50+ powerful tools for encoding, decoding, formatting, and generating. 
-                  All processing happens in your browser - fast, secure, and private.
-                </p>
-                <div className="flex items-center gap-2">
-                  <Heart className="h-4 w-4 text-red-400 fill-red-400 animate-pulse" />
-                  <span className="text-sm text-gray-400">Built for developers worldwide</span>
-                </div>
+        {/* Minimal Sticky Footer */}
+        <footer className="mt-auto py-3 border-t border-white/10 bg-black/50 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex flex-col items-center justify-center gap-2 text-xs text-gray-400">
+              <div className="flex items-center gap-3">
+                <Link href="/privacy" className="hover:text-blue-400 transition-colors">Privacy</Link>
+                <span>•</span>
+                <Link href="/terms" className="hover:text-blue-400 transition-colors">Terms</Link>
+                <span>•</span>
+                <a href="mailto:contact.darkmintis@gmail.com" className="hover:text-blue-400 transition-colors">Contact</a>
               </div>
-
-              {/* Quick Links */}
-              <div>
-                <h4 className="text-white font-semibold mb-4">Resources</h4>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <Link href="https://github.com/Darkmintis/OneTap-Tools" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                      GitHub
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://github.com/Darkmintis/OneTap-Tools#readme" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                      Documentation
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://github.com/Darkmintis/OneTap-Tools/issues" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                      Report Issue
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://github.com/Darkmintis/OneTap-Tools/issues/new" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                      Feature Request
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Legal */}
-              <div>
-                <h4 className="text-white font-semibold mb-4">Legal</h4>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <Link href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors">
-                      Privacy Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">
-                      Terms of Service
-                    </Link>
-                  </li>
-                  <li>
-                    <span className="text-gray-500">No Cookies</span>
-                  </li>
-                  <li>
-                    <span className="text-gray-500">No Tracking</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Features Badges */}
-            <div className="border-t border-white/10 pt-8 mb-8">
-              <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
-                  <Sparkles className="h-3 w-3 text-blue-400" />
-                  <span className="text-gray-300">50+ Tools</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
-                  <Shield className="h-3 w-3 text-green-400" />
-                  <span className="text-gray-300">100% Privacy</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
-                  <Clock className="h-3 w-3 text-purple-400" />
-                  <span className="text-gray-300">Always Free</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
-                  <Rocket className="h-3 w-3 text-orange-400" />
-                  <span className="text-gray-300">No Sign-up</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Copyright */}
-            <div className="text-center border-t border-white/10 pt-8">
-              <p className="text-gray-500 text-sm">
-                © 2025 <span className="text-gray-400 font-medium">Darkmintis</span> • 1Tap Tools • All Rights Reserved
-              </p>
-              <p className="text-gray-600 text-xs mt-2">
-                All tools process data locally in your browser. No data is sent to any server.
-              </p>
+              <div className="text-gray-500">© 2025 Darkmintis • 1Tap Tools</div>
             </div>
           </div>
         </footer>

@@ -83,7 +83,10 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-2xl font-semibold text-white mb-3">Contact</h2>
               <p>
-                If you have any questions about this privacy policy, please contact us through our GitHub repository.
+                If you have any questions about this privacy policy, please contact us at{" "}
+                <a href="mailto:contact.darkmintis@gmail.com" className="text-blue-400 hover:underline">
+                  contact.darkmintis@gmail.com
+                </a>
               </p>
             </section>
           </div>
