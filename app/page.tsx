@@ -15,6 +15,7 @@ export default function OneTapTools() {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({})
   const [searchTerm, setSearchTerm] = useState("")
+  const [activeCategory, setActiveCategory] = useState("text")
   const { toast } = useToast()
   const isMobile = useIsMobile()
 
@@ -3086,50 +3087,68 @@ export default function OneTapTools() {
     .filter((category) => category.tools.length > 0)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-[url('/placeholder.svg?height=100&width=100')] opacity-5"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10"></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-violet-950 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
+        <div className="absolute w-96 h-96 bg-purple-500/20 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" style={{animationDelay: '2s'}}></div>
+      </div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE2YzAgMi4yMS0xLjc5IDQtNCA0cy00LTEuNzktNC00IDEuNzktNCA0LTQgNCAxLjc5IDQgNHptLTQgMTJjMi4yMSAwIDQgMS43OSA0IDRzLTEuNzkgNC00IDQtNC0xLjc5LTQtNCAxLjc5LTQgNC00eiIvPjwvZz48L2c+PC9zdmc+')] opacity-40"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-6 sm:py-8 min-h-screen flex flex-col">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 sm:p-3 rounded-2xl mr-3 sm:mr-4">
-              <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+          <div className="flex items-center justify-center mb-4 animate-fade-in">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-75"></div>
+              <div className="relative bg-gradient-to-r from-blue-500 to-purple-600 p-2 sm:p-3 rounded-2xl mr-3 sm:mr-4 transform group-hover:scale-110 transition-transform">
+                <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+              </div>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              OneTap Tools
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:scale-105 transition-transform cursor-default">
+              1Tap Tools
             </h1>
           </div>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
-            Your comprehensive toolkit with 50+ free tools for encoding, decoding, formatting, generating, and
-            converting. Simple, fast, and beautiful tools at your fingertips.
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed">
+            🚀 Your ultimate developer toolkit with <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">50+ powerful tools</span> for encoding, decoding, formatting, generating, and converting. 
+            <br/>
+            <span className="text-sm sm:text-base text-gray-400 mt-2 block">Simple • Fast • Beautiful • Free Forever</span>
           </p>
 
-          {/* Search */}
-          <div className="max-w-md mx-auto relative px-4">
-            <Search className="absolute left-7 top-3 h-4 w-4 text-gray-400" />
-            <Input
-              placeholder="Search tools..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 pl-10"
-            />
+          {/* Enhanced Search */}
+          <div className="max-w-lg mx-auto relative px-4">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-md group-focus-within:blur-lg transition-all"></div>
+              <div className="relative">
+                <Search className="absolute left-4 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-blue-400 transition-colors" />
+                <Input
+                  placeholder="🔍 Search tools... (try 'json', 'base64', 'password')" 
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-gray-400 pl-12 pr-4 py-6 text-base rounded-xl focus:bg-white/15 focus:border-blue-400/50 transition-all shadow-xl"
+                />
+              </div>
+            </div>
+            {searchTerm && (
+              <p className="text-sm text-gray-400 mt-2 text-center">
+                Found {filteredCategories.reduce((acc, cat) => acc + cat.tools.length, 0)} tools
+              </p>
+            )}
           </div>
         </div>
 
         {/* Tools Categories */}
-        <div className="max-w-6xl mx-auto flex-1 px-4">
-          <Tabs defaultValue="text" className="w-full">
-            <div className="overflow-x-auto mb-8">
-              <TabsList className="flex w-max min-w-full bg-white/10 gap-1 p-1">
+        <div className="max-w-7xl mx-auto flex-1 px-4">
+          <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
+            <div className="overflow-x-auto mb-8 pb-2">
+              <TabsList className="flex w-max min-w-full bg-white/10 backdrop-blur-md gap-2 p-2 rounded-2xl shadow-2xl border border-white/10">
                 {toolCategories.map((category) => (
                   <TabsTrigger
                     key={category.id}
                     value={category.id}
-                    className="data-[state=active]:bg-white/20 text-white text-xs sm:text-sm px-3 py-2 whitespace-nowrap flex-shrink-0"
+                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg text-gray-300 hover:text-white text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap flex-shrink-0 rounded-xl transition-all duration-300 font-medium hover:bg-white/10"
                   >
                     <span className="hidden sm:inline">{category.title}</span>
                     <span className="sm:hidden">{category.title.split(" ")[0]}</span>
@@ -3139,28 +3158,40 @@ export default function OneTapTools() {
             </div>
 
             {filteredCategories.map((category) => (
-              <TabsContent key={category.id} value={category.id} className="space-y-6">
-                <div className="text-center mb-6">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{category.title}</h2>
-                  <p className="text-gray-300 text-sm sm:text-base">{category.description}</p>
+              <TabsContent key={category.id} value={category.id} className="space-y-6 animate-fade-in">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    {category.title}
+                  </h2>
+                  <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto">{category.description}</p>
+                  <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
+                    <span className="text-xs text-gray-400">{category.tools.length} tools available</span>
+                  </div>
                 </div>
 
                 <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                  {category.tools.map((tool) => (
-                    <Card key={tool.id} className="bg-white/10 backdrop-blur-lg border-white/20 shadow-2xl">
+                  {category.tools.map((tool, index) => (
+                    <Card 
+                      key={tool.id} 
+                      className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border-white/20 shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:scale-[1.02] hover:border-blue-400/30 group"
+                      style={{animationDelay: `${index * 50}ms`}}
+                    >
                       <Collapsible open={openSections[tool.id]} onOpenChange={() => toggleSection(tool.id)}>
                         <CollapsibleTrigger asChild>
-                          <CardHeader className="cursor-pointer hover:bg-white/5 transition-colors rounded-t-lg p-4 sm:p-6">
-                            <div className="flex items-center justify-between">
+                          <CardHeader className="cursor-pointer hover:bg-white/10 transition-all duration-300 rounded-t-lg p-4 sm:p-6 relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="flex items-center justify-between relative z-10">
                               <div className="text-left flex-1 min-w-0">
-                                <CardTitle className="text-white text-base sm:text-lg truncate">{tool.title}</CardTitle>
-                                <CardDescription className="text-gray-300 text-xs sm:text-sm line-clamp-2">{tool.description}</CardDescription>
+                                <CardTitle className="text-white text-base sm:text-lg font-semibold mb-1 group-hover:text-blue-300 transition-colors">{tool.title}</CardTitle>
+                                <CardDescription className="text-gray-400 text-xs sm:text-sm line-clamp-2">{tool.description}</CardDescription>
                               </div>
-                              {openSections[tool.id] ? (
-                                <ChevronUp className="h-4 w-4 text-gray-400 flex-shrink-0 ml-2" />
-                              ) : (
-                                <ChevronDown className="h-4 w-4 text-gray-400 flex-shrink-0 ml-2" />
-                              )}
+                              <div className="flex-shrink-0 ml-3 p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
+                                {openSections[tool.id] ? (
+                                  <ChevronUp className="h-4 w-4 text-blue-400" />
+                                ) : (
+                                  <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-blue-400 transition-colors" />
+                                )}
+                              </div>
                             </div>
                           </CardHeader>
                         </CollapsibleTrigger>
@@ -3176,10 +3207,22 @@ export default function OneTapTools() {
           </Tabs>
         </div>
 
-        {/* Fixed Footer */}
-        <footer className="mt-16 py-8 border-t border-white/10">
-          <div className="text-center text-gray-400">
-            <p>Built with ❤️ for developers, designers, and creators worldwide</p>
+        {/* Enhanced Footer */}
+        <footer className="mt-20 py-8 border-t border-white/10 bg-black/20 backdrop-blur-sm">
+          <div className="text-center">
+            <p className="text-gray-400 mb-2 text-sm sm:text-base">
+              Built with <span className="text-red-400 animate-pulse">❤️</span> for developers, designers, and creators worldwide
+            </p>
+            <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
+              <span>50+ Tools</span>
+              <span>•</span>
+              <span>100% Free</span>
+              <span>•</span>
+              <span>No Sign-up Required</span>
+              <span>•</span>
+              <span>Privacy First</span>
+            </div>
+            <p className="text-gray-600 text-xs mt-3">© 2025 Darkmintis • 1Tap Tools</p>
           </div>
         </footer>
       </div>

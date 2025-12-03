@@ -1,10 +1,10 @@
-# OneTap Tools - All-in-One Developer Toolkit
+# 1Tap Tools - All-in-One Developer Toolkit
 
 > **Private & Proprietary** - Internal use only
 
 ## 🚀 Overview
 
-OneTap Tools is a modern, fast, and beautiful collection of developer utilities built with Next.js 15, React 19, and TypeScript. It provides essential tools for encoding, decoding, formatting, and generating content - all in one convenient location.
+1Tap Tools is a modern, fast, and beautiful collection of developer utilities built with Next.js 15, React 19, and TypeScript. It provides **50+ essential tools** for encoding, decoding, formatting, and generating content - all in one convenient location with a stunning, responsive UI.
 
 ## ✨ Features
 
@@ -68,4 +68,4 @@ OneTap Tools is a modern, fast, and beautiful collection of developer utilities 
 
 ---
 
-**© 2025 Darkmintis - All Rights Reserved**
+**© 2025 Darkmintis • 1Tap Tools - All Rights Reserved**

@@ -8,37 +8,43 @@ import Analytics from "@/components/analytics"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "OneTap Tools - All-in-One Developer Toolkit",
+  title: "1Tap Tools - All-in-One Developer Toolkit | 50+ Free Tools",
   description:
-    "Simple, fast, and beautiful tools for encoding, decoding, formatting, and generating. Base64, URL encoding, QR codes, JSON formatting, hash generation, and more.",
+    "🚀 The ultimate developer toolkit with 50+ free tools for encoding, decoding, formatting, and generating. Base64, URL encoding, QR codes, JSON formatting, hash generation, password generator, and more. Simple, fast, and beautiful.",
   generator: 'Next.js',
   keywords: [
+    '1tap tools',
     'developer tools',
     'base64 encoder',
     'json formatter',
     'qr code generator',
     'hash generator',
     'url encoder',
+    'password generator',
     'text tools',
     'web tools',
     'online tools',
-    'free tools'
+    'free tools',
+    'encoding tools',
+    'conversion tools',
+    'uuid generator',
+    'color converter'
   ],
   authors: [{ name: 'Darkmintis' }],
   creator: 'Darkmintis',
   publisher: 'Darkmintis',
   metadataBase: new URL('https://onetap-tools.vercel.app'),
   openGraph: {
-    title: 'OneTap Tools - All-in-One Developer Toolkit',
-    description: 'Simple, fast, and beautiful tools for encoding, decoding, formatting, and generating.',
+    title: '1Tap Tools - All-in-One Developer Toolkit | 50+ Free Tools',
+    description: '🚀 The ultimate developer toolkit with 50+ free tools. Simple, fast, and beautiful tools for encoding, decoding, formatting, and generating.',
     url: 'https://onetap-tools.vercel.app',
-    siteName: 'OneTap Tools',
+    siteName: '1Tap Tools',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'OneTap Tools - Developer Toolkit',
+        alt: '1Tap Tools - Developer Toolkit',
       },
     ],
     locale: 'en_US',
@@ -46,8 +52,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OneTap Tools - All-in-One Developer Toolkit',
-    description: 'Simple, fast, and beautiful tools for encoding, decoding, formatting, and generating.',
+    title: '1Tap Tools - All-in-One Developer Toolkit | 50+ Free Tools',
+    description: '🚀 The ultimate developer toolkit with 50+ free tools. Simple, fast, and beautiful.',
     images: ['/og-image.png'],
     creator: '@darkmintisog',
   },
