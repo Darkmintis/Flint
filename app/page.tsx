@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronDown, ChevronUp, Copy, Check, Zap, Search } from "lucide-react"
+import { ChevronDown, ChevronUp, Copy, Check, Zap, Search, Rocket, Sparkles, Shield, Heart, Clock } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useIsMobile } from "@/hooks/use-mobile"
 
@@ -97,9 +97,9 @@ export default function OneTapTools() {
     setOpenSections((prev) => {
       // Close all other sections when opening a new one
       const newState: Record<string, boolean> = {}
-      Object.keys(prev).forEach((key) => {
+      for (const key of Object.keys(prev)) {
         newState[key] = false
-      })
+      }
       newState[section] = !prev[section]
       return newState
     })
@@ -117,6 +117,7 @@ export default function OneTapTools() {
         setCopiedStates((prev) => ({ ...prev, [key]: false }))
       }, 2000)
     } catch (err) {
+      console.error('Clipboard error:', err)
       toast({
         title: "Error",
         description: "Failed to copy to clipboard",
@@ -131,7 +132,7 @@ export default function OneTapTools() {
       const text = toolStates.textInput
       const words = text.trim() ? text.trim().split(/\s+/).length : 0
       const chars = text.length
-      const charsNoSpaces = text.replace(/\s/g, "").length
+      const charsNoSpaces = text.replaceAll(/\s/g, "").length
       const lines = text.split("\n").length
       const paragraphs = text.split(/\n\s*\n/).filter((p: string) => p.trim()).length
       updateToolState(
@@ -155,22 +156,22 @@ export default function OneTapTools() {
     titleCase: () => {
       updateToolState(
         "textOutput",
-        toolStates.textInput.replace(/\w\S*/g, (txt: string) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()),
+        toolStates.textInput.replaceAll(/\w\S*/g, (txt: string) => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()),
       )
     },
 
     camelCase: () => {
       const camelCased = toolStates.textInput
-        .replace(/(?:^\w|[A-Z]|\b\w)/g, (word: string, index: number) => {
+        .replaceAll(/(?:^\w|[A-Z]|\b\w)/g, (word: string, index: number) => {
           return index === 0 ? word.toLowerCase() : word.toUpperCase()
         })
-        .replace(/\s+/g, "")
+        .replaceAll(/\s+/g, "")
       updateToolState("textOutput", camelCased)
     },
 
     snakeCase: () => {
       const snakeCased = toolStates.textInput
-        .replace(/\W+/g, " ")
+        .replaceAll(/\W+/g, " ")
         .split(/ |\B(?=[A-Z])/)
         .map((word: string) => word.toLowerCase())
         .join("_")
@@ -179,7 +180,7 @@ export default function OneTapTools() {
 
     kebabCase: () => {
       const kebabCased = toolStates.textInput
-        .replace(/\W+/g, " ")
+        .replaceAll(/\W+/g, " ")
         .split(/ |\B(?=[A-Z])/)
         .map((word: string) => word.toLowerCase())
         .join("-")
@@ -187,7 +188,7 @@ export default function OneTapTools() {
     },
 
     removeSpaces: () => {
-      updateToolState("textOutput", toolStates.textInput.replace(/\s/g, ""))
+      updateToolState("textOutput", toolStates.textInput.replaceAll(/\s/g, ""))
     },
 
     removeDuplicateLines: () => {
@@ -231,7 +232,7 @@ export default function OneTapTools() {
     },
 
     findReplace: (find: string, replace: string) => {
-      const result = toolStates.textInput.replace(new RegExp(find, "g"), replace)
+      const result = toolStates.textInput.replaceAll(new RegExp(find, "g"), replace)
       updateToolState("textOutput", result)
     },
   }
@@ -242,6 +243,7 @@ export default function OneTapTools() {
       try {
         updateToolState("base64Output", btoa(toolStates.base64Input))
       } catch (error) {
+        console.error('Base64 encode error:', error)
         toast({ title: "Error", description: "Failed to encode Base64", variant: "destructive" })
       }
     },
@@ -250,6 +252,7 @@ export default function OneTapTools() {
       try {
         updateToolState("base64Output", atob(toolStates.base64Input))
       } catch (error) {
+        console.error('Base64 decode error:', error)
         toast({ title: "Error", description: "Invalid Base64 string", variant: "destructive" })
       }
     },
@@ -262,6 +265,7 @@ export default function OneTapTools() {
       try {
         updateToolState("urlOutput", decodeURIComponent(toolStates.urlInput))
       } catch (error) {
+        console.error('URL decode error:', error)
         toast({ title: "Error", description: "Failed to decode URL", variant: "destructive" })
       }
     },
@@ -269,7 +273,7 @@ export default function OneTapTools() {
     textToBinary: () => {
       const binary = toolStates.textInput
         .split("")
-        .map((char: string) => char.charCodeAt(0).toString(2).padStart(8, "0"))
+        .map((char: string) => (char.codePointAt(0) ?? 0).toString(2).padStart(8, "0"))
         .join(" ")
       updateToolState("textOutput", binary)
     },
@@ -278,10 +282,11 @@ export default function OneTapTools() {
       try {
         const text = toolStates.textInput
           .split(" ")
-          .map((binary: string) => String.fromCharCode(Number.parseInt(binary, 2)))
+          .map((binary: string) => String.fromCodePoint(Number.parseInt(binary, 2)))
           .join("")
         updateToolState("textOutput", text)
       } catch (error) {
+        console.error('Binary conversion error:', error)
         toast({ title: "Error", description: "Invalid binary format", variant: "destructive" })
       }
     },
@@ -289,7 +294,7 @@ export default function OneTapTools() {
     textToHex: () => {
       const hex = toolStates.textInput
         .split("")
-        .map((char: string) => char.charCodeAt(0).toString(16).padStart(2, "0"))
+        .map((char: string) => (char.codePointAt(0) ?? 0).toString(16).padStart(2, "0"))
         .join(" ")
       updateToolState("textOutput", hex)
     },
@@ -298,10 +303,11 @@ export default function OneTapTools() {
       try {
         const text = toolStates.textInput
           .split(" ")
-          .map((hex: string) => String.fromCharCode(Number.parseInt(hex, 16)))
+          .map((hex: string) => String.fromCodePoint(Number.parseInt(hex, 16)))
           .join("")
         updateToolState("textOutput", text)
       } catch (error) {
+        console.error('Hex conversion error:', error)
         toast({ title: "Error", description: "Invalid hex format", variant: "destructive" })
       }
     },
@@ -403,7 +409,7 @@ export default function OneTapTools() {
 
     rgbToHex: () => {
       const rgb = toolStates.textInput.match(/\d+/g)
-      if (rgb && rgb.length === 3) {
+      if (rgb?.length === 3) {
         const hex = rgb.map((x: string) => Number.parseInt(x).toString(16).padStart(2, "0")).join("")
         updateToolState("textOutput", `#${hex}`)
       } else {
@@ -474,9 +480,9 @@ export default function OneTapTools() {
     },
 
     generateUUID: () => {
-      const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
-        const r = (Math.random() * 16) | 0
-        const v = c == "x" ? r : (r & 0x3) | 0x8
+      const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replaceAll(/[xy]/g, (c) => {
+        const r = Math.trunc(Math.random() * 16)
+        const v = c === "x" ? r : (r & 0x3) | 0x8
         return v.toString(16)
       })
       updateToolState("uuidOutput", uuid)
@@ -562,10 +568,12 @@ export default function OneTapTools() {
     generateSlug: () => {
       const slug = toolStates.textInput
         .toLowerCase()
-        .replace(/[^a-z0-9 -]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-")
-        .trim("-")
+        .replaceAll(/[^a-z0-9 -]/g, "")
+        .replaceAll(/\s+/g, "-")
+        .replaceAll(/-+/g, "-")
+        .trim()
+        .replaceAll(/^-+/g, "")
+        .replaceAll(/-+$/g, "")
       updateToolState("textOutput", slug)
     },
 
@@ -605,6 +613,7 @@ export default function OneTapTools() {
         const parsed = JSON.parse(toolStates.jsonInput)
         updateToolState("jsonOutput", JSON.stringify(parsed, null, 2))
       } catch (error) {
+        console.error('JSON parse error:', error)
         toast({ title: "Error", description: "Invalid JSON format", variant: "destructive" })
       }
     },
@@ -614,6 +623,7 @@ export default function OneTapTools() {
         const parsed = JSON.parse(toolStates.jsonInput)
         updateToolState("jsonOutput", JSON.stringify(parsed))
       } catch (error) {
+        console.error('JSON parse error:', error)
         toast({ title: "Error", description: "Invalid JSON format", variant: "destructive" })
       }
     },
@@ -629,42 +639,42 @@ export default function OneTapTools() {
 
     escapeHTML: () => {
       const escaped = toolStates.htmlInput
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;")
       updateToolState("htmlOutput", escaped)
     },
 
     unescapeHTML: () => {
       const unescaped = toolStates.htmlInput
-        .replace(/&amp;/g, "&")
-        .replace(/&lt;/g, "<")
-        .replace(/&gt;/g, ">")
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
+        .replaceAll("&amp;", "&")
+        .replaceAll("&lt;", "<")
+        .replaceAll("&gt;", ">")
+        .replaceAll("&quot;", '"')
+        .replaceAll("&#39;", "'")
       updateToolState("htmlOutput", unescaped)
     },
 
     minifyCSS: () => {
       const minified = toolStates.cssInput
-        .replace(/\/\*[\s\S]*?\*\//g, "")
-        .replace(/\s+/g, " ")
-        .replace(/;\s*}/g, "}")
-        .replace(/\s*{\s*/g, "{")
-        .replace(/;\s*/g, ";")
-        .replace(/,\s*/g, ",")
+        .replaceAll(/\/\*[\s\S]*?\*\//g, "")
+        .replaceAll(/\s+/g, " ")
+        .replaceAll(/;\s*}/g, "}")
+        .replaceAll(/\s*{\s*/g, "{")
+        .replaceAll(/;\s*/g, ";")
+        .replaceAll(/,\s*/g, ",")
         .trim()
       updateToolState("cssOutput", minified)
     },
 
     formatCSS: () => {
       const formatted = toolStates.cssInput
-        .replace(/\s*{\s*/g, " {\n  ")
-        .replace(/;\s*/g, ";\n  ")
-        .replace(/\s*}\s*/g, "\n}\n\n")
-        .replace(/,\s*/g, ",\n")
+        .replaceAll(/\s*{\s*/g, " {\n  ")
+        .replaceAll(/;\s*/g, ";\n  ")
+        .replaceAll(/\s*}\s*/g, "\n}\n\n")
+        .replaceAll(/,\s*/g, ",\n")
       updateToolState("cssOutput", formatted)
     },
 
@@ -676,6 +686,7 @@ export default function OneTapTools() {
         const formatted = serializer.serializeToString(xmlDoc)
         updateToolState("xmlOutput", formatted)
       } catch (error) {
+        console.error('XML format error:', error)
         toast({ title: "Error", description: "Invalid XML format", variant: "destructive" })
       }
     },
@@ -683,17 +694,17 @@ export default function OneTapTools() {
     generateRegex: () => {
       const patterns = {
         email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        phone: /^\+?[\d\s\-$$$$]+$/,
+        phone: /^\+?[\d\s()-]+$/,
         url: /^https?:\/\/[^\s]+$/,
-        ipv4: /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
+        ipv4: /^(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)$/,
         creditCard: /^\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}$/,
         strongPassword: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
       }
 
       let result = "Common Regex Patterns:\n\n"
-      Object.entries(patterns).forEach(([name, pattern]) => {
+      for (const [name, pattern] of Object.entries(patterns)) {
         result += `${name}: ${pattern.source}\n`
-      })
+      }
 
       updateToolState("regexOutput", result)
     },
@@ -704,6 +715,7 @@ export default function OneTapTools() {
         const matches = toolStates.regexTestString.match(regex)
         updateToolState("regexOutput", matches ? matches.join("\n") : "No matches found")
       } catch (error) {
+        console.error('Regex test error:', error)
         toast({ title: "Error", description: "Invalid regex pattern", variant: "destructive" })
       }
     },
@@ -738,12 +750,12 @@ export default function OneTapTools() {
         exp: Math.floor(Date.now() / 1000) + 3600, // 1 hour from now
       }
 
-      const encodedHeader = btoa(JSON.stringify(header)).replace(/=/g, "")
-      const encodedPayload = btoa(JSON.stringify(payload)).replace(/=/g, "")
+      const encodedHeader = btoa(JSON.stringify(header)).replaceAll("=", "")
+      const encodedPayload = btoa(JSON.stringify(payload)).replaceAll("=", "")
       
       // Simple signature for demo purposes (not cryptographically secure)
       const data = `${encodedHeader}.${encodedPayload}`
-      const signature = btoa(`demo_signature_${data.length}_${Date.now()}`).replace(/=/g, "").substring(0, 43)
+      const signature = btoa(`demo_signature_${data.length}_${Date.now()}`).replaceAll("=", "").substring(0, 43)
 
       const jwt = `${encodedHeader}.${encodedPayload}.${signature}`
       updateToolState("jwtOutput", jwt)
@@ -762,6 +774,7 @@ export default function OneTapTools() {
         const result = `Header:\n${JSON.stringify(header, null, 2)}\n\nPayload:\n${JSON.stringify(payload, null, 2)}`
         updateToolState("jwtOutput", result)
       } catch (error) {
+        console.error('JWT decode error:', error)
         toast({ title: "Error", description: "Invalid JWT token", variant: "destructive" })
       }
     },
@@ -841,9 +854,15 @@ export default function OneTapTools() {
       const l2 = getLuminance(color2)
       const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05)
 
+      const getContrastLevel = (contrastRatio: number) => {
+        if (contrastRatio >= 7) return "✅ AAA"
+        if (contrastRatio >= 4.5) return "✅ AA"
+        return "❌ Fail"
+      }
+
       updateToolState(
         "colorOutput",
-        `Contrast Ratio: ${ratio.toFixed(2)}:1\n${ratio >= 7 ? "✅ AAA" : ratio >= 4.5 ? "✅ AA" : "❌ Fail"}`,
+        `Contrast Ratio: ${ratio.toFixed(2)}:1\n${getContrastLevel(ratio)}`,
       )
     },
   }
@@ -923,7 +942,7 @@ export default function OneTapTools() {
   const unitTools = {
     convertLength: () => {
       const value = Number.parseFloat(toolStates.lengthValue)
-      if (isNaN(value)) return
+      if (Number.isNaN(value)) return
 
       const conversions: Record<string, number> = {
         meters: 1,
@@ -943,7 +962,7 @@ export default function OneTapTools() {
 
     convertWeight: () => {
       const value = Number.parseFloat(toolStates.weightValue)
-      if (isNaN(value)) return
+      if (Number.isNaN(value)) return
 
       const conversions: Record<string, number> = {
         kilograms: 1,
@@ -961,7 +980,7 @@ export default function OneTapTools() {
 
     convertTemperature: () => {
       const value = Number.parseFloat(toolStates.tempValue)
-      if (isNaN(value)) return
+      if (Number.isNaN(value)) return
 
       let celsius = value
       if (toolStates.tempFrom === "fahrenheit") {
@@ -982,7 +1001,7 @@ export default function OneTapTools() {
 
     convertFileSize: () => {
       const bytes = Number.parseFloat(toolStates.fileSize)
-      if (isNaN(bytes)) return
+      if (Number.isNaN(bytes)) return
 
       const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
       const i = Math.floor(Math.log(bytes) / Math.log(1024))
@@ -1002,7 +1021,7 @@ export default function OneTapTools() {
       }
 
       const value = Number.parseFloat(toolStates.currencyValue)
-      if (isNaN(value)) return
+      if (Number.isNaN(value)) return
 
       const fromRate = mockRates[toolStates.currencyFrom] || 1
       const toRate = mockRates[toolStates.currencyTo] || 1
@@ -1031,7 +1050,7 @@ export default function OneTapTools() {
       const width = Number.parseFloat(toolStates.imageWidth)
       const height = Number.parseFloat(toolStates.imageHeight)
 
-      if (isNaN(width) || isNaN(height)) return
+      if (Number.isNaN(width) || Number.isNaN(height)) return
 
       const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))
       const divisor = gcd(width, height)
@@ -1044,7 +1063,7 @@ export default function OneTapTools() {
       const originalHeight = Number.parseFloat(toolStates.originalHeight)
       const newWidth = Number.parseFloat(toolStates.newWidth)
 
-      if (isNaN(originalWidth) || isNaN(originalHeight) || isNaN(newWidth)) return
+      if (Number.isNaN(originalWidth) || Number.isNaN(originalHeight) || Number.isNaN(newWidth)) return
 
       const aspectRatio = originalHeight / originalWidth
       const newHeight = newWidth * aspectRatio
@@ -1082,7 +1101,7 @@ export default function OneTapTools() {
       const [ip, cidr] = toolStates.subnet.split("/")
       const cidrNum = Number.parseInt(cidr)
 
-      if (!ip || isNaN(cidrNum) || cidrNum < 0 || cidrNum > 32) {
+      if (!ip || Number.isNaN(cidrNum) || cidrNum < 0 || cidrNum > 32) {
         updateToolState("subnetResult", "Invalid subnet format. Use: 192.168.1.0/24")
         return
       }
@@ -1153,7 +1172,7 @@ export default function OneTapTools() {
       const time = Number.parseFloat(toolStates.time)
       const compound = Number.parseFloat(toolStates.compound) || 1
 
-      if (isNaN(principal) || isNaN(rate) || isNaN(time)) return
+      if (Number.isNaN(principal) || Number.isNaN(rate) || Number.isNaN(time)) return
 
       const amount = principal * Math.pow(1 + rate / compound, compound * time)
       const interest = amount - principal
@@ -1166,7 +1185,7 @@ export default function OneTapTools() {
       const rate = Number.parseFloat(toolStates.loanRate) / 100 / 12
       const months = Number.parseFloat(toolStates.loanTerm) * 12
 
-      if (isNaN(principal) || isNaN(rate) || isNaN(months)) return
+      if (Number.isNaN(principal) || Number.isNaN(rate) || Number.isNaN(months)) return
 
       const monthlyPayment = (principal * (rate * Math.pow(1 + rate, months))) / (Math.pow(1 + rate, months) - 1)
       const totalPayment = monthlyPayment * months
@@ -1183,7 +1202,7 @@ export default function OneTapTools() {
       const tipPercent = Number.parseFloat(toolStates.tipPercent)
       const people = Number.parseFloat(toolStates.splitPeople) || 1
 
-      if (isNaN(bill) || isNaN(tipPercent)) return
+      if (Number.isNaN(bill) || Number.isNaN(tipPercent)) return
 
       const tip = bill * (tipPercent / 100)
       const total = bill + tip
@@ -3112,9 +3131,14 @@ export default function OneTapTools() {
             </h1>
           </div>
           <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed">
-            🚀 Your ultimate developer toolkit with <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">50+ powerful tools</span> for encoding, decoding, formatting, generating, and converting. 
+            <span className="inline-flex items-center gap-2">
+              <Rocket className="h-5 w-5 text-blue-400" />
+              Your ultimate developer toolkit with <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">50+ powerful tools</span> for encoding, decoding, formatting, generating, and converting.
+            </span>
             <br/>
-            <span className="text-sm sm:text-base text-gray-400 mt-2 block">Simple • Fast • Beautiful • Free Forever</span>
+            <span className="text-sm sm:text-base text-gray-400 mt-2 flex items-center justify-center gap-2">
+              <Sparkles className="h-3 w-3" /> Simple • <Clock className="h-3 w-3" /> Fast • <Sparkles className="h-3 w-3" /> Beautiful • <Shield className="h-3 w-3" /> Free Forever
+            </span>
           </p>
 
           {/* Enhanced Search */}
@@ -3124,7 +3148,7 @@ export default function OneTapTools() {
               <div className="relative">
                 <Search className="absolute left-4 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-blue-400 transition-colors" />
                 <Input
-                  placeholder="🔍 Search tools... (try 'json', 'base64', 'password')" 
+                  placeholder="Search tools... (try 'json', 'base64', 'password')" 
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-gray-400 pl-12 pr-4 py-6 text-base rounded-xl focus:bg-white/15 focus:border-blue-400/50 transition-all shadow-xl"
@@ -3210,8 +3234,8 @@ export default function OneTapTools() {
         {/* Enhanced Footer */}
         <footer className="mt-20 py-8 border-t border-white/10 bg-black/20 backdrop-blur-sm">
           <div className="text-center">
-            <p className="text-gray-400 mb-2 text-sm sm:text-base">
-              Built with <span className="text-red-400 animate-pulse">❤️</span> for developers, designers, and creators worldwide
+            <p className="text-gray-400 mb-2 text-sm sm:text-base flex items-center justify-center gap-2">
+              Built with <Heart className="h-4 w-4 text-red-400 fill-red-400 animate-pulse" /> for developers, designers, and creators worldwide
             </p>
             <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
               <span>50+ Tools</span>

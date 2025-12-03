@@ -2,38 +2,38 @@
 
 > **Private & Proprietary** - Internal use only
 
-## 🚀 Overview
+## Overview
 
 1Tap Tools is a modern, fast, and beautiful collection of developer utilities built with Next.js 15, React 19, and TypeScript. It provides **50+ essential tools** for encoding, decoding, formatting, and generating content - all in one convenient location with a stunning, responsive UI.
 
-## ✨ Features
+## Features
 
-### 📝 Text Tools
+### Text Tools
 - **Text Analysis**: Word count, character count, line count, paragraph count
 - **Text Transformations**: Uppercase, lowercase, title case, camelCase, snake_case, kebab-case
 - **Text Processing**: Reverse text, remove spaces, remove duplicate lines, sort lines
 - **Email Extraction**: Extract email addresses from text
 - **Find & Replace**: Search and replace text with optional regex support
 
-### 🔄 Encoding & Conversion Tools
+### Encoding & Conversion Tools
 - **Base64**: Encode and decode Base64 strings
 - **URL Encoding**: Encode and decode URL components
 - **Binary/Hex Conversion**: Convert between text, binary, and hexadecimal
 - **Morse Code**: Encode and decode Morse code
 - **Color Conversion**: Convert between HEX, RGB, and HSL color formats
 
-### 🔧 Developer Tools
+### Developer Tools
 - **JSON Formatter**: Pretty-print and minify JSON
 - **HTML Formatter**: Format and minify HTML
 - **CSS Formatter**: Format and minify CSS
 - **XML Formatter**: Format XML documents
 - **Regular Expressions**: Common regex patterns generator
 
-### 🔐 Security & Hash Tools
+### Security & Hash Tools
 - **Hash Generator**: Generate MD5, SHA-1, SHA-256, SHA-512 hashes
 - **JWT Tools**: Generate and decode JSON Web Tokens (demo purposes)
 
-### 🎨 Generators
+### Generators
 - **QR Code Generator**: Generate QR codes from text
 - **Password Generator**: Create secure passwords with customizable length
 - **UUID Generator**: Generate v4 UUIDs
@@ -50,7 +50,7 @@
 - **Icons**: Lucide React
 - **Deployment**: Vercel
 
-## 🌟 Key Features
+## Key Features
 
 - **Dark Theme**: Beautiful dark theme with glassmorphism effects and smooth animations
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
@@ -58,14 +58,14 @@
 - **Search Functionality**: Quickly find tools using the search feature
 - **Collapsible Sections**: Organize your workflow with collapsible tool sections
 
-## 📊 Project Stats
+## Project Stats
 
-- ⚡ Fast: Built with Next.js 15 and optimized for performance
-- 🎨 Beautiful: Modern UI with Tailwind CSS and custom components
-- 📱 Responsive: Works on all devices and screen sizes
-- 🔧 Developer-Friendly: TypeScript for better development experience
-- 🚀 Production-Ready: Optimized build and deployment process
+- **Fast**: Built with Next.js 15 and optimized for performance
+- **Beautiful**: Modern UI with Tailwind CSS and custom components
+- **Responsive**: Works on all devices and screen sizes
+- **Developer-Friendly**: TypeScript for better development experience
+- **Production-Ready**: Optimized build and deployment process
 
 ---
 
-**© 2025 Darkmintis • 1Tap Tools - All Rights Reserved**
+**Copyright 2025 Darkmintis - 1Tap Tools - All Rights Reserved**
