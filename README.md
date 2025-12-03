@@ -1,9 +1,6 @@
 # OneTap Tools - All-in-One Developer Toolkit
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/darkmintisog/v0-one-tap-tools-design)
-[![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+> **Private & Proprietary** - Internal use only
 
 ## 🚀 Overview
 
@@ -46,98 +43,20 @@ OneTap Tools is a modern, fast, and beautiful collection of developer utilities 
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Components**: [Radix UI](https://www.radix-ui.com/) with custom styling
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Deployment**: [Vercel](https://vercel.com/)
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Components**: Radix UI with custom styling
+- **Icons**: Lucide React
+- **Deployment**: Vercel
 
-## 🚀 Getting Started
+## 🌟 Key Features
 
-### Prerequisites
-
-- Node.js 18+ 
-- npm, yarn, or pnpm
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Darkmintis/OneTap-Tools.git
-cd OneTap-Tools
-```
-
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Building for Production
-
-```bash
-npm run build
-npm run start
-```
-
-## 🌟 Features in Detail
-
-### Dark Theme
-The application features a beautiful dark theme with glassmorphism effects and smooth animations.
-
-### Responsive Design
-Fully responsive design that works seamlessly on desktop, tablet, and mobile devices.
-
-### Copy to Clipboard
-One-click copying for all tool outputs with visual feedback.
-
-### Search Functionality
-Quickly find tools using the search feature.
-
-### Collapsible Sections
-Organize your workflow with collapsible tool sections.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🚀 Deployment
-
-The application is automatically deployed to Vercel. Any changes pushed to the main branch will trigger a new deployment.
-
-**Live Demo**: [https://onetap-tools.vercel.app](https://vercel.com/darkmintisog/v0-one-tap-tools-design)
-
-## 🙏 Acknowledgments
-
-- Built with [v0.dev](https://v0.dev) for rapid prototyping
-- Icons by [Lucide](https://lucide.dev/)
-- UI Components by [Radix UI](https://www.radix-ui.com/)
-- Hosted on [Vercel](https://vercel.com/)
+- **Dark Theme**: Beautiful dark theme with glassmorphism effects and smooth animations
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Copy to Clipboard**: One-click copying for all tool outputs with visual feedback
+- **Search Functionality**: Quickly find tools using the search feature
+- **Collapsible Sections**: Organize your workflow with collapsible tool sections
 
 ## 📊 Project Stats
 
@@ -149,4 +68,4 @@ The application is automatically deployed to Vercel. Any changes pushed to the m
 
 ---
 
-Made with ❤️ by [Darkmintis](https://github.com/Darkmintis)
+**© 2025 Darkmintis - All Rights Reserved**
