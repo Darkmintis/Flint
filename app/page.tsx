@@ -737,6 +737,7 @@ export default function OneTapTools() {
         const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("")
         updateToolState("hashOutput", `${algorithm}: ${hashHex}`)
       } catch (error) {
+        console.error('Hash generation error:', error)
         toast({ title: "Error", description: `Failed to generate ${algorithm} hash`, variant: "destructive" })
       }
     },
@@ -1076,8 +1077,8 @@ export default function OneTapTools() {
   const networkTools = {
     validateIP: () => {
       const ip = toolStates.ipAddress
-      const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
-      const ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/
+      const ipv4Regex = /^(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/
+      const ipv6Regex = /^(?:[\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$/
 
       let result = ""
       if (ipv4Regex.test(ip)) {
