@@ -760,7 +760,7 @@ export default function OneTapTools() {
 
       const encodedHeader = btoa(JSON.stringify(header)).replaceAll("=", "")
       const encodedPayload = btoa(JSON.stringify(payload)).replaceAll("=", "")
-      
+
       // Simple signature for demo purposes (not cryptographically secure)
       const data = `${encodedHeader}.${encodedPayload}`
       const signature = btoa(`demo_signature_${data.length}_${Date.now()}`).replaceAll("=", "").substring(0, 43)
@@ -1098,7 +1098,7 @@ export default function OneTapTools() {
                 onChange={(e) => updateToolState("textInput", e.target.value)}
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 min-h-[120px]"
               />
-              <Button onClick={textTools.wordCount} className="bg-blue-600 hover:bg-blue-700">
+              <Button onClick={textTools.wordCount} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                 Count Words
               </Button>
               {toolStates.textOutput && (
@@ -1129,28 +1129,28 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                <Button onClick={textTools.upperCase} className="bg-red-600 hover:bg-red-700">
+                <Button onClick={textTools.upperCase} className="btn-gradient btn-gradient-red text-white rounded-xl">
                   UPPER
                 </Button>
-                <Button onClick={textTools.lowerCase} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={textTools.lowerCase} className="btn-gradient btn-gradient-green text-white rounded-xl">
                   lower
                 </Button>
-                <Button onClick={textTools.titleCase} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={textTools.titleCase} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                   Title
                 </Button>
-                <Button onClick={textTools.camelCase} className="bg-purple-600 hover:bg-purple-700">
+                <Button onClick={textTools.camelCase} className="btn-gradient btn-gradient-purple text-white rounded-xl">
                   camelCase
                 </Button>
-                <Button onClick={textTools.snakeCase} className="bg-orange-600 hover:bg-orange-700">
+                <Button onClick={textTools.snakeCase} className="btn-gradient btn-gradient-orange text-white rounded-xl">
                   snake_case
                 </Button>
-                <Button onClick={textTools.kebabCase} className="bg-pink-600 hover:bg-pink-700">
+                <Button onClick={textTools.kebabCase} className="btn-gradient btn-gradient-pink text-white rounded-xl">
                   kebab-case
                 </Button>
-                <Button onClick={textTools.reverseText} className="bg-cyan-600 hover:bg-cyan-700">
+                <Button onClick={textTools.reverseText} className="btn-gradient btn-gradient-cyan text-white rounded-xl">
                   Reverse
                 </Button>
-                <Button onClick={textTools.removeSpaces} className="bg-yellow-600 hover:bg-yellow-700">
+                <Button onClick={textTools.removeSpaces} className="btn-gradient btn-gradient-yellow text-white rounded-xl">
                   No Spaces
                 </Button>
               </div>
@@ -1189,10 +1189,10 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
               <div className="flex gap-2">
-                <Button onClick={conversionTools.encodeBase64} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={conversionTools.encodeBase64} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                   Encode
                 </Button>
-                <Button onClick={conversionTools.decodeBase64} className="bg-purple-600 hover:bg-purple-700">
+                <Button onClick={conversionTools.decodeBase64} className="btn-gradient btn-gradient-purple text-white rounded-xl">
                   Decode
                 </Button>
               </div>
@@ -1228,10 +1228,10 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
               <div className="flex gap-2">
-                <Button onClick={conversionTools.encodeURL} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={conversionTools.encodeURL} className="btn-gradient btn-gradient-green text-white rounded-xl">
                   Encode
                 </Button>
-                <Button onClick={conversionTools.decodeURL} className="bg-orange-600 hover:bg-orange-700">
+                <Button onClick={conversionTools.decodeURL} className="btn-gradient btn-gradient-orange text-white rounded-xl">
                   Decode
                 </Button>
               </div>
@@ -1263,16 +1263,16 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                <Button onClick={conversionTools.textToBinary} className="bg-red-600 hover:bg-red-700">
+                <Button onClick={conversionTools.textToBinary} className="btn-gradient btn-gradient-red text-white rounded-xl">
                   Text → Binary
                 </Button>
-                <Button onClick={conversionTools.binaryToText} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={conversionTools.binaryToText} className="btn-gradient btn-gradient-green text-white rounded-xl">
                   Binary → Text
                 </Button>
-                <Button onClick={conversionTools.textToHex} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={conversionTools.textToHex} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                   Text → Hex
                 </Button>
-                <Button onClick={conversionTools.hexToText} className="bg-purple-600 hover:bg-purple-700">
+                <Button onClick={conversionTools.hexToText} className="btn-gradient btn-gradient-purple text-white rounded-xl">
                   Hex → Text
                 </Button>
               </div>
@@ -1308,10 +1308,10 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
               <div className="flex gap-2">
-                <Button onClick={conversionTools.textToMorse} className="bg-cyan-600 hover:bg-cyan-700">
+                <Button onClick={conversionTools.textToMorse} className="btn-gradient btn-gradient-cyan text-white rounded-xl">
                   Text → Morse
                 </Button>
-                <Button onClick={conversionTools.morseToText} className="bg-pink-600 hover:bg-pink-700">
+                <Button onClick={conversionTools.morseToText} className="btn-gradient btn-gradient-pink text-white rounded-xl">
                   Morse → Text
                 </Button>
               </div>
@@ -1347,10 +1347,10 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
               <div className="flex gap-2">
-                <Button onClick={conversionTools.rgbToHex} className="bg-red-600 hover:bg-red-700">
+                <Button onClick={conversionTools.rgbToHex} className="btn-gradient btn-gradient-red text-white rounded-xl">
                   RGB → Hex
                 </Button>
-                <Button onClick={conversionTools.hexToRgb} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={conversionTools.hexToRgb} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                   Hex → RGB
                 </Button>
               </div>
@@ -1392,7 +1392,7 @@ export default function OneTapTools() {
                 onChange={(e) => updateToolState("qrInput", e.target.value)}
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
-              <Button onClick={generatorTools.generateQR} className="bg-pink-600 hover:bg-pink-700">
+              <Button onClick={generatorTools.generateQR} className="btn-gradient btn-gradient-pink text-white rounded-xl">
                 Generate QR Code
               </Button>
               {toolStates.qrOutput && (
@@ -1434,10 +1434,10 @@ export default function OneTapTools() {
                 />
               </div>
               <div className="flex gap-2">
-                <Button onClick={generatorTools.generatePassword} className="bg-red-600 hover:bg-red-700">
+                <Button onClick={generatorTools.generatePassword} className="btn-gradient btn-gradient-red text-white rounded-xl">
                   Generate Password
                 </Button>
-                <Button onClick={generatorTools.generateStrongPassword} className="bg-orange-600 hover:bg-orange-700">
+                <Button onClick={generatorTools.generateStrongPassword} className="btn-gradient btn-gradient-orange text-white rounded-xl">
                   Strong Password
                 </Button>
               </div>
@@ -1466,7 +1466,7 @@ export default function OneTapTools() {
           description: "Generate unique identifiers",
           content: (
             <div className="space-y-4">
-              <Button onClick={generatorTools.generateUUID} className="bg-cyan-600 hover:bg-cyan-700">
+              <Button onClick={generatorTools.generateUUID} className="btn-gradient btn-gradient-cyan text-white rounded-xl">
                 Generate UUID
               </Button>
               {toolStates.uuidOutput && (
@@ -1506,7 +1506,7 @@ export default function OneTapTools() {
                   className="bg-white/5 border-white/20 text-white w-20"
                 />
               </div>
-              <Button onClick={generatorTools.generateLorem} className="bg-yellow-600 hover:bg-yellow-700">
+              <Button onClick={generatorTools.generateLorem} className="btn-gradient btn-gradient-yellow text-white rounded-xl">
                 Generate Lorem Ipsum
               </Button>
               {toolStates.loremOutput && (
@@ -1576,7 +1576,7 @@ export default function OneTapTools() {
                 onChange={(e) => updateToolState("barcodeInput", e.target.value)}
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
-              <Button onClick={generatorTools.generateBarcode} className="bg-indigo-600 hover:bg-indigo-700">
+              <Button onClick={generatorTools.generateBarcode} className="btn-gradient btn-gradient-indigo text-white rounded-xl">
                 Generate Barcode
               </Button>
               {toolStates.barcodeOutput && (
@@ -1619,13 +1619,13 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 min-h-[120px]"
               />
               <div className="flex gap-2">
-                <Button onClick={developerTools.formatJSON} className="bg-cyan-600 hover:bg-cyan-700">
+                <Button onClick={developerTools.formatJSON} className="btn-gradient btn-gradient-cyan text-white rounded-xl">
                   Format
                 </Button>
-                <Button onClick={developerTools.minifyJSON} className="bg-indigo-600 hover:bg-indigo-700">
+                <Button onClick={developerTools.minifyJSON} className="btn-gradient btn-gradient-indigo text-white rounded-xl">
                   Minify
                 </Button>
-                <Button onClick={developerTools.validateJSON} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={developerTools.validateJSON} className="btn-gradient btn-gradient-green text-white rounded-xl">
                   Validate
                 </Button>
               </div>
@@ -1661,10 +1661,10 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 min-h-[120px]"
               />
               <div className="flex gap-2">
-                <Button onClick={developerTools.escapeHTML} className="bg-orange-600 hover:bg-orange-700">
+                <Button onClick={developerTools.escapeHTML} className="btn-gradient btn-gradient-orange text-white rounded-xl">
                   Escape HTML
                 </Button>
-                <Button onClick={developerTools.unescapeHTML} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={developerTools.unescapeHTML} className="btn-gradient btn-gradient-green text-white rounded-xl">
                   Unescape HTML
                 </Button>
               </div>
@@ -1714,10 +1714,10 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
               <div className="flex gap-2">
-                <Button onClick={developerTools.generateRegex} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={developerTools.generateRegex} className="btn-gradient btn-gradient-green text-white rounded-xl">
                   Common Patterns
                 </Button>
-                <Button onClick={developerTools.testRegex} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={developerTools.testRegex} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                   Test Regex
                 </Button>
               </div>
@@ -1762,7 +1762,7 @@ export default function OneTapTools() {
               <div className="flex gap-2 flex-wrap">
                 <Button
                   onClick={() => securityTools.generateHash("SHA-1")}
-                  className="bg-yellow-600 hover:bg-yellow-700"
+                  className="btn-gradient btn-gradient-yellow text-white rounded-xl"
                 >
                   SHA-1
                 </Button>
@@ -1772,7 +1772,7 @@ export default function OneTapTools() {
                 >
                   SHA-256
                 </Button>
-                <Button onClick={() => securityTools.generateHash("SHA-512")} className="bg-red-600 hover:bg-red-700">
+                <Button onClick={() => securityTools.generateHash("SHA-512")} className="btn-gradient btn-gradient-red text-white rounded-xl">
                   SHA-512
                 </Button>
               </div>
@@ -1823,13 +1823,13 @@ export default function OneTapTools() {
                 />
               </div>
               <div className="flex gap-2 flex-wrap">
-                <Button onClick={colorTools.hexToRgb} className="bg-red-600 hover:bg-red-700">
+                <Button onClick={colorTools.hexToRgb} className="btn-gradient btn-gradient-red text-white rounded-xl">
                   To RGB
                 </Button>
-                <Button onClick={colorTools.hexToHsl} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={colorTools.hexToHsl} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                   To HSL
                 </Button>
-                <Button onClick={colorTools.generatePalette} className="bg-purple-600 hover:bg-purple-700">
+                <Button onClick={colorTools.generatePalette} className="btn-gradient btn-gradient-purple text-white rounded-xl">
                   Generate Palette
                 </Button>
               </div>
@@ -1868,16 +1868,16 @@ export default function OneTapTools() {
                 className="bg-white/5 border-white/20 text-white"
               />
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                <Button onClick={dateTools.formatDate} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={dateTools.formatDate} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                   Format Date
                 </Button>
-                <Button onClick={() => dateTools.addDays(7)} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={() => dateTools.addDays(7)} className="btn-gradient btn-gradient-green text-white rounded-xl">
                   Add 7 Days
                 </Button>
-                <Button onClick={() => dateTools.addDays(30)} className="bg-purple-600 hover:bg-purple-700">
+                <Button onClick={() => dateTools.addDays(30)} className="btn-gradient btn-gradient-purple text-white rounded-xl">
                   Add 30 Days
                 </Button>
-                <Button onClick={dateTools.timeZoneConverter} className="bg-orange-600 hover:bg-orange-700">
+                <Button onClick={dateTools.timeZoneConverter} className="btn-gradient btn-gradient-orange text-white rounded-xl">
                   Time Zones
                 </Button>
               </div>
@@ -1916,7 +1916,7 @@ export default function OneTapTools() {
                 onChange={(e) => updateToolState("fileSize", e.target.value)}
                 className="bg-white/5 border-white/20 text-white"
               />
-              <Button onClick={unitTools.convertFileSize} className="bg-orange-600 hover:bg-orange-700">
+              <Button onClick={unitTools.convertFileSize} className="btn-gradient btn-gradient-orange text-white rounded-xl">
                 Convert File Size
               </Button>
               {toolStates.fileSizeResult && (
@@ -1967,7 +1967,7 @@ export default function OneTapTools() {
                   className="bg-white/5 border-white/20 text-white"
                 />
               </div>
-              <Button onClick={imageTools.calculateAspectRatio} className="bg-purple-600 hover:bg-purple-700">
+              <Button onClick={imageTools.calculateAspectRatio} className="btn-gradient btn-gradient-purple text-white rounded-xl">
                 Calculate Aspect Ratio
               </Button>
               {toolStates.imageResult && (
@@ -2008,7 +2008,7 @@ export default function OneTapTools() {
                 onChange={(e) => updateToolState("ipAddress", e.target.value)}
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
-              <Button onClick={networkTools.validateIP} className="bg-blue-600 hover:bg-blue-700">
+              <Button onClick={networkTools.validateIP} className="btn-gradient btn-gradient-blue text-white rounded-xl">
                 Validate IP
               </Button>
               {toolStates.ipResult && (
@@ -2038,7 +2038,7 @@ export default function OneTapTools() {
                 onChange={(e) => updateToolState("subnet", e.target.value)}
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
-              <Button onClick={networkTools.subnetCalculator} className="bg-green-600 hover:bg-green-700">
+              <Button onClick={networkTools.subnetCalculator} className="btn-gradient btn-gradient-green text-white rounded-xl">
                 Calculate Subnet
               </Button>
               {toolStates.subnetResult && (
@@ -2073,7 +2073,7 @@ export default function OneTapTools() {
                 onChange={(e) => updateToolState("portNumber", e.target.value)}
                 className="bg-white/5 border-white/20 text-white placeholder:text-gray-400"
               />
-              <Button onClick={networkTools.portChecker} className="bg-purple-600 hover:bg-purple-700">
+              <Button onClick={networkTools.portChecker} className="btn-gradient btn-gradient-purple text-white rounded-xl">
                 Check Port
               </Button>
               {toolStates.portResult && (
@@ -2100,9 +2100,9 @@ export default function OneTapTools() {
   ]
 
   // Flatten all tools from all categories into a single array
-  const allTools = toolCategories.flatMap((category, catIndex) => 
-    category.tools.map((tool, toolIndex) => ({ 
-      ...tool, 
+  const allTools = toolCategories.flatMap((category, catIndex) =>
+    category.tools.map((tool, toolIndex) => ({
+      ...tool,
       category: category.title,
       uniqueId: `${category.id}-${tool.id}-${catIndex}-${toolIndex}` // Create unique ID
     }))
@@ -2121,19 +2121,19 @@ export default function OneTapTools() {
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {/* Gradient mesh background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#0a0a1f] to-[#0f0720]"></div>
-        
+
         {/* Animated gradient orbs */}
         <div className="absolute w-[600px] h-[600px] bg-gradient-to-r from-blue-600/30 to-cyan-500/20 rounded-full blur-[120px] -top-64 -left-64 animate-float"></div>
         <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-purple-600/25 to-pink-500/15 rounded-full blur-[100px] -bottom-48 -right-48 animate-float-delayed"></div>
         <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-violet-600/20 to-fuchsia-500/10 rounded-full blur-[80px] top-1/3 left-1/4 animate-float-slow"></div>
         <div className="absolute w-[300px] h-[300px] bg-gradient-to-r from-indigo-500/15 to-blue-400/10 rounded-full blur-[60px] bottom-1/4 right-1/3 animate-breathe"></div>
-        
+
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"></div>
-        
+
         {/* Noise texture overlay */}
         <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml,%3Csvg viewBox=%270 0 256 256%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27noise%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.8%27 numOctaves=%274%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23noise)%27/%3E%3C/svg%3E')]"></div>
-        
+
         {/* Radial gradient overlay for depth */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.1)_0%,transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(147,51,234,0.08)_0%,transparent_50%)]"></div>
@@ -2166,9 +2166,9 @@ export default function OneTapTools() {
               </div>
             </div>
           </div>
-          
+
           {/* Tagline with icons */}
-          <div className="animate-fade-in" style={{animationDelay: '0.1s'}}>
+          <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-6 px-4 leading-relaxed">
               <span className="flex items-center justify-center gap-3 flex-wrap">
                 <Rocket className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
@@ -2176,7 +2176,7 @@ export default function OneTapTools() {
                 <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 animate-shimmer px-1">30+ essential tools</span>
               </span>
             </p>
-            
+
             {/* Feature badges */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8">
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-blue-500/30 transition-all duration-300 group">
@@ -2199,7 +2199,7 @@ export default function OneTapTools() {
           </div>
 
           {/* Premium Search Bar */}
-          <div className="max-w-2xl mx-auto relative px-4 animate-fade-in" style={{animationDelay: '0.2s'}}>
+          <div className="max-w-2xl mx-auto relative px-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <div className="relative group">
               {/* Search glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-0 group-focus-within:opacity-100 transition-all duration-500"></div>
@@ -2212,7 +2212,7 @@ export default function OneTapTools() {
                   </div>
                 </div>
                 <Input
-                  placeholder="Search tools... (try 'json', 'base64', 'password')" 
+                  placeholder="Search tools... (try 'json', 'base64', 'password')"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full h-14 sm:h-16 bg-white/[0.03] backdrop-blur-xl border-white/10 text-white placeholder:text-gray-500 pl-14 sm:pl-24 pr-6 text-base sm:text-lg rounded-2xl focus:bg-white/[0.06] focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-2xl shadow-black/20"
@@ -2230,7 +2230,7 @@ export default function OneTapTools() {
         {/* Tools Section */}
         <main className="max-w-7xl mx-auto flex-1 w-full px-2 sm:px-4 pb-8">
           {/* Section Header */}
-          <div className="text-center mb-10 animate-fade-in" style={{animationDelay: '0.3s'}}>
+          <div className="text-center mb-10 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 mb-4">
               <Code2 className="h-4 w-4 text-blue-400" />
               <span className="text-sm font-medium text-blue-300">Developer Essentials</span>
@@ -2239,69 +2239,71 @@ export default function OneTapTools() {
               <span className="gradient-text">All Tools</span>
             </h2>
             <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
-              {searchTerm 
-                ? `Showing ${filteredTools.length} matching tools` 
+              {searchTerm
+                ? `Showing ${filteredTools.length} matching tools`
                 : `${allTools.length} powerful tools at your fingertips — click to expand`}
             </p>
           </div>
 
           {/* Tools Grid */}
-          <div className="grid gap-4 sm:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-start">
+          <div className="grid gap-5 sm:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-start">
             {filteredTools.map((tool, index) => (
-              <Card 
-                key={tool.uniqueId} 
-                className="group glass-premium rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/10 card-glow animate-card"
-                style={{animationDelay: `${index * 30}ms`}}
+              <Card
+                key={tool.uniqueId}
+                className="group card-premium card-gradient-border overflow-hidden animate-card-fast"
+                style={{ animationDelay: `${index * 20}ms` }}
               >
                 <Collapsible open={openTools[tool.uniqueId]} onOpenChange={() => toggleTool(tool.uniqueId)}>
                   <CollapsibleTrigger asChild>
                     <CardHeader className="cursor-pointer p-5 sm:p-6 relative overflow-hidden transition-all duration-300">
                       {/* Hover gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
                       {/* Header Content */}
-                      <div className="flex items-start justify-between relative z-10 gap-3">
+                      <div className="flex items-start justify-between relative z-10 gap-4">
                         <div className="flex-1 min-w-0">
                           {/* Tool Title */}
-                          <CardTitle className="text-white text-base sm:text-lg font-semibold mb-1.5 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-300 group-hover:to-purple-300 transition-all duration-300">
+                          <CardTitle className="text-white text-base sm:text-lg font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-300 group-hover:via-purple-300 group-hover:to-pink-300 transition-all duration-300">
                             {tool.title}
                           </CardTitle>
-                          
+
                           {/* Tool Description */}
                           <CardDescription className="text-gray-400 text-sm line-clamp-2 leading-relaxed">
                             {tool.description}
                           </CardDescription>
-                          
+
                           {/* Category Badge */}
                           <div className="mt-3 inline-flex items-center gap-1.5">
-                            <span className="text-xs font-medium text-blue-400/80 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/20">
+                            <span className="text-xs font-semibold text-blue-300/90 bg-gradient-to-r from-blue-500/15 to-purple-500/15 px-3 py-1.5 rounded-full border border-blue-500/25 backdrop-blur-sm">
                               {tool.category}
                             </span>
                           </div>
                         </div>
-                        
+
                         {/* Expand/Collapse Icon */}
-                        <div className="flex-shrink-0 p-2.5 rounded-xl bg-white/5 group-hover:bg-gradient-to-br group-hover:from-blue-500/20 group-hover:to-purple-500/20 border border-white/5 group-hover:border-blue-500/30 transition-all duration-300">
+                        <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] group-hover:from-blue-500/20 group-hover:to-purple-500/20 border border-white/10 group-hover:border-blue-500/40 transition-all duration-300 shadow-lg shadow-black/10">
                           {openTools[tool.uniqueId] ? (
                             <ChevronUp className="h-4 w-4 text-blue-400" />
                           ) : (
-                            <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" />
+                            <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-blue-300 transition-colors duration-300" />
                           )}
                         </div>
                       </div>
                     </CardHeader>
                   </CollapsibleTrigger>
-                  
+
                   <CollapsibleContent>
-                    <CardContent className="pt-0 p-5 sm:p-6 border-t border-white/5">
-                      {tool.content}
+                    <CardContent className="pt-0 p-5 sm:p-6 border-t border-white/[0.06] bg-gradient-to-b from-white/[0.02] to-transparent">
+                      <div className="space-y-5">
+                        {tool.content}
+                      </div>
                     </CardContent>
                   </CollapsibleContent>
                 </Collapsible>
               </Card>
             ))}
           </div>
-          
+
           {/* Empty State */}
           {filteredTools.length === 0 && (
             <div className="text-center py-20">
@@ -2331,28 +2333,28 @@ export default function OneTapTools() {
             <div className="flex flex-col items-center justify-center gap-3">
               {/* Navigation Links */}
               <div className="flex items-center gap-6">
-                <Link 
-                  href="/privacy" 
+                <Link
+                  href="/privacy"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
                 >
                   Privacy
                 </Link>
                 <span className="text-gray-600">•</span>
-                <Link 
-                  href="/terms" 
+                <Link
+                  href="/terms"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
                 >
                   Terms
                 </Link>
                 <span className="text-gray-600">•</span>
-                <a 
-                  href="mailto:contact.darkmintis@gmail.com" 
+                <a
+                  href="mailto:contact.darkmintis@gmail.com"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
                 >
                   Contact
                 </a>
               </div>
-              
+
               {/* Copyright */}
               <div className="flex items-center gap-2 text-xs text-gray-500">
                 <span>© 2025</span>

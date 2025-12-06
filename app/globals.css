@@ -307,4 +307,272 @@
     opacity: 0.03;
     pointer-events: none;
   }
+  
+  /* ========================================
+     PREMIUM BUTTON STYLES
+     ======================================== */
+  
+  /* Gradient button base */
+  .btn-gradient {
+    @apply relative overflow-hidden font-semibold;
+    background: linear-gradient(135deg, var(--btn-from) 0%, var(--btn-to) 100%);
+    box-shadow: 0 4px 15px -3px var(--btn-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px var(--btn-shadow);
+    filter: brightness(1.1);
+  }
+  
+  .btn-gradient:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px -3px var(--btn-shadow);
+  }
+  
+  /* Gradient button variants */
+  .btn-gradient-blue {
+    --btn-from: #3b82f6;
+    --btn-to: #2563eb;
+    --btn-shadow: rgba(59, 130, 246, 0.5);
+  }
+  
+  .btn-gradient-purple {
+    --btn-from: #8b5cf6;
+    --btn-to: #7c3aed;
+    --btn-shadow: rgba(139, 92, 246, 0.5);
+  }
+  
+  .btn-gradient-pink {
+    --btn-from: #ec4899;
+    --btn-to: #db2777;
+    --btn-shadow: rgba(236, 72, 153, 0.5);
+  }
+  
+  .btn-gradient-green {
+    --btn-from: #10b981;
+    --btn-to: #059669;
+    --btn-shadow: rgba(16, 185, 129, 0.5);
+  }
+  
+  .btn-gradient-orange {
+    --btn-from: #f97316;
+    --btn-to: #ea580c;
+    --btn-shadow: rgba(249, 115, 22, 0.5);
+  }
+  
+  .btn-gradient-cyan {
+    --btn-from: #06b6d4;
+    --btn-to: #0891b2;
+    --btn-shadow: rgba(6, 182, 212, 0.5);
+  }
+  
+  .btn-gradient-red {
+    --btn-from: #ef4444;
+    --btn-to: #dc2626;
+    --btn-shadow: rgba(239, 68, 68, 0.5);
+  }
+  
+  .btn-gradient-yellow {
+    --btn-from: #eab308;
+    --btn-to: #ca8a04;
+    --btn-shadow: rgba(234, 179, 8, 0.5);
+  }
+  
+  .btn-gradient-indigo {
+    --btn-from: #6366f1;
+    --btn-to: #4f46e5;
+    --btn-shadow: rgba(99, 102, 241, 0.5);
+  }
+  
+  /* Multi-color gradient button */
+  .btn-gradient-multi {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+    --btn-shadow: rgba(139, 92, 246, 0.5);
+  }
+  
+  /* ========================================
+     ENHANCED INPUT STYLES
+     ======================================== */
+  
+  .input-premium {
+    @apply bg-white/[0.03] border border-white/10 text-white placeholder:text-gray-500;
+    @apply transition-all duration-300 ease-out;
+    @apply backdrop-blur-sm;
+  }
+  
+  .input-premium:focus {
+    @apply bg-white/[0.06] border-blue-500/50;
+    box-shadow: 
+      0 0 0 3px rgba(59, 130, 246, 0.15),
+      0 0 20px rgba(59, 130, 246, 0.1);
+  }
+  
+  .input-premium:hover:not(:focus) {
+    @apply border-white/20 bg-white/[0.04];
+  }
+  
+  /* Output/readonly textarea styling */
+  .output-area {
+    @apply bg-slate-900/50 border border-white/10 text-white font-mono text-sm;
+    @apply rounded-xl backdrop-blur-sm;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.4) 100%);
+  }
+  
+  /* ========================================
+     REFINED CARD STYLES
+     ======================================== */
+  
+  .card-premium {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1.25rem;
+    box-shadow: 
+      0 4px 24px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-premium:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 
+      0 8px 40px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(59, 130, 246, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+  
+  /* Gradient border on hover */
+  .card-gradient-border {
+    position: relative;
+  }
+  
+  .card-gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(139, 92, 246, 0.5), rgba(236, 72, 153, 0.5));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  
+  .card-gradient-border:hover::before {
+    opacity: 1;
+  }
+  
+  /* ========================================
+     TOOL CONTENT AREA STYLES
+     ======================================== */
+  
+  .tool-content {
+    @apply space-y-5;
+  }
+  
+  .tool-content .input-group {
+    @apply space-y-3;
+  }
+  
+  .tool-content .action-group {
+    @apply flex flex-wrap gap-3;
+  }
+  
+  .tool-content .output-group {
+    @apply relative mt-4;
+  }
+  
+  /* Copy button positioning */
+  .copy-btn {
+    @apply absolute top-3 right-3;
+    @apply p-2 rounded-lg;
+    @apply bg-white/10 hover:bg-white/20 backdrop-blur-sm;
+    @apply border border-white/10 hover:border-white/20;
+    @apply transition-all duration-200;
+  }
+  
+  .copy-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .copy-btn:active {
+    transform: scale(0.95);
+  }
+  
+  /* ========================================
+     CATEGORY SECTION STYLES
+     ======================================== */
+  
+  .category-header {
+    @apply mb-6 pb-4 border-b border-white/5;
+  }
+  
+  .category-title {
+    @apply text-lg font-semibold text-white flex items-center gap-3;
+  }
+  
+  .category-icon {
+    @apply w-8 h-8 rounded-lg flex items-center justify-center;
+    @apply bg-gradient-to-br from-blue-500/20 to-purple-500/20;
+    @apply border border-white/10;
+  }
+  
+  /* ========================================
+     SNAPPIER ANIMATION OVERRIDES
+     ======================================== */
+  
+  @keyframes card-appear-fast {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .animate-card-fast {
+    animation: card-appear-fast 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  /* Smoother expand animation */
+  @keyframes expand-content {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .expand-content {
+    animation: expand-content 0.25s ease-out forwards;
+  }
+  
+  /* Pulse animation for success states */
+  @keyframes success-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+  }
+  
+  .success-pulse {
+    animation: success-pulse 0.6s ease-out;
+  }
 }
+
