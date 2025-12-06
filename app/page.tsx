@@ -1107,9 +1107,9 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "text")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
-                    {copiedStates.text ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    {copiedStates.text ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
                   </Button>
                 </div>
               )}
@@ -1160,9 +1160,9 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "transform")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
-                    {copiedStates.transform ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    {copiedStates.transform ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
                   </Button>
                 </div>
               )}
@@ -1206,9 +1206,9 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.base64Output, "base64")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
-                    {copiedStates.base64 ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    {copiedStates.base64 ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
                   </Button>
                 </div>
               )}
@@ -1241,9 +1241,9 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.urlOutput, "url")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
-                    {copiedStates.url ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    {copiedStates.url ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
                   </Button>
                 </div>
               )}
@@ -1286,7 +1286,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "binary")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.binary ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1325,7 +1325,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "morse")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.morse ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1364,7 +1364,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.textOutput, "colorconv")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.colorconv ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1451,7 +1451,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.passwordOutput, "password")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.password ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1479,7 +1479,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.uuidOutput, "uuid")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.uuid ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1519,7 +1519,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.loremOutput, "lorem")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.lorem ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1639,7 +1639,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.jsonOutput, "json")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.json ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1678,7 +1678,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.htmlOutput, "html")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.html ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1731,7 +1731,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.regexOutput, "regex")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.regex ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1786,7 +1786,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.hashOutput, "hash")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.hash ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1839,7 +1839,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.colorOutput, "color")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.color ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -1887,51 +1887,9 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.dateOutput, "date")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.date ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                  </Button>
-                </div>
-              )}
-            </div>
-          ),
-        },
-      ],
-    },
-    {
-      id: "units",
-      title: "Unit Converters",
-      description: "Convert between different units",
-      tools: [
-        {
-          id: "file-size-converter",
-          title: "File Size Converter",
-          description: "Convert file sizes between units",
-          content: (
-            <div className="space-y-4">
-              <Input
-                type="number"
-                placeholder="Enter size in bytes"
-                value={toolStates.fileSize}
-                onChange={(e) => updateToolState("fileSize", e.target.value)}
-                className="bg-white/5 border-white/20 text-white"
-              />
-              <Button onClick={unitTools.convertFileSize} className="btn-gradient btn-gradient-orange text-white rounded-xl">
-                Convert File Size
-              </Button>
-              {toolStates.fileSizeResult && (
-                <div className="relative">
-                  <Input
-                    value={toolStates.fileSizeResult}
-                    readOnly
-                    className="bg-white/5 border-white/20 text-white font-mono text-center text-lg"
-                  />
-                  <Button
-                    size={getButtonSize()}
-                    onClick={() => copyToClipboard(toolStates.fileSizeResult, "filesize")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
-                  >
-                    {copiedStates.filesize ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
                 </div>
               )}
@@ -1980,7 +1938,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.imageResult, "aspect")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.aspect ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -2017,7 +1975,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.ipResult, "ip")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.ip ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -2051,7 +2009,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.subnetResult, "subnet")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.subnet ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -2086,7 +2044,7 @@ export default function OneTapTools() {
                   <Button
                     size={getButtonSize()}
                     onClick={() => copyToClipboard(toolStates.portResult, "port")}
-                    className="absolute top-2 right-2 bg-white/10 hover:bg-white/20"
+                    className="copy-btn"
                   >
                     {copiedStates.port ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </Button>
@@ -2327,40 +2285,50 @@ export default function OneTapTools() {
           </button>
         )}
 
-        {/* Premium Footer */}
-        <footer className="w-full py-4 sm:py-5 border-t border-white/5 bg-black/30 backdrop-blur-xl">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex flex-col items-center justify-center gap-3">
-              {/* Navigation Links */}
-              <div className="flex items-center gap-6">
-                <Link
-                  href="/privacy"
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
-                >
-                  Privacy
-                </Link>
-                <span className="text-gray-600">•</span>
-                <Link
-                  href="/terms"
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
-                >
-                  Terms
-                </Link>
-                <span className="text-gray-600">•</span>
-                <a
-                  href="mailto:contact.darkmintis@gmail.com"
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 hover:after:w-full after:transition-all after:duration-300"
-                >
-                  Contact
-                </a>
+        {/* Footer */}
+        <footer className="mt-auto w-full border-t border-white/10 bg-gradient-to-b from-slate-900/95 to-black">
+          <div className="max-w-7xl mx-auto px-4 py-8 sm:py-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4">
+              {/* Brand */}
+              <div className="flex flex-col items-center sm:items-start gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <Zap className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="text-lg font-bold text-white">1Tap Tools</span>
+                </div>
+                <p className="text-sm text-gray-400 text-center sm:text-left">Developer utilities made simple</p>
+              </div>
+
+              {/* Links */}
+              <div className="flex flex-col items-center gap-3">
+                <span className="text-sm font-semibold text-gray-300">Links</span>
+                <div className="flex items-center gap-4">
+                  <Link
+                    href="/privacy"
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                  >
+                    Privacy
+                  </Link>
+                  <Link
+                    href="/terms"
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                  >
+                    Terms
+                  </Link>
+                  <a
+                    href="mailto:contact.darkmintis@gmail.com"
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                  >
+                    Contact
+                  </a>
+                </div>
               </div>
 
               {/* Copyright */}
-              <div className="flex items-center gap-2 text-xs text-gray-500">
-                <span>© 2025</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-medium">Darkmintis</span>
-                <span>•</span>
-                <span>1Tap Tools</span>
+              <div className="flex flex-col items-center sm:items-end gap-2">
+                <span className="text-xs text-gray-500">© 2025 Darkmintis</span>
+                <span className="text-xs text-gray-600">All rights reserved</span>
               </div>
             </div>
           </div>
