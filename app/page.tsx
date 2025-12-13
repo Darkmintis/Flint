@@ -67,8 +67,6 @@ export default function OneTapTools() {
     jsonOutput: "",
     htmlInput: "",
     htmlOutput: "",
-    cssInput: "",
-    cssOutput: "",
 
     // Hash & Security
     hashInput: "",
@@ -82,12 +80,6 @@ export default function OneTapTools() {
     dateInput: new Date().toISOString().split("T")[0],
     dateOutput: "",
 
-    // Unit Conversion
-    lengthValue: "",
-    lengthFrom: "meters",
-    lengthTo: "feet",
-    lengthResult: "",
-
     // File Tools
     fileSize: "",
     fileSizeResult: "",
@@ -100,12 +92,6 @@ export default function OneTapTools() {
     // Network Tools
     ipAddress: "",
     ipResult: "",
-
-    // Finance Tools
-    principal: "",
-    rate: "",
-    time: "",
-    financeResult: "",
   })
 
   const updateToolState = (key: string, value: any) => {
@@ -196,51 +182,6 @@ export default function OneTapTools() {
 
     removeSpaces: () => {
       updateToolState("textOutput", toolStates.textInput.replaceAll(/\s/g, ""))
-    },
-
-    removeDuplicateLines: () => {
-      const lines = toolStates.textInput.split("\n")
-      const unique = [...new Set(lines)]
-      updateToolState("textOutput", unique.join("\n"))
-    },
-
-    sortLines: () => {
-      const lines = toolStates.textInput.split("\n")
-      updateToolState("textOutput", lines.sort().join("\n"))
-    },
-
-    extractEmails: () => {
-      const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g
-      const emails = toolStates.textInput.match(emailRegex) || []
-      updateToolState("textOutput", emails.join("\n"))
-    },
-
-    extractUrls: () => {
-      const urlRegex =
-        /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/g
-      const urls = toolStates.textInput.match(urlRegex) || []
-      updateToolState("textOutput", urls.join("\n"))
-    },
-
-    extractNumbers: () => {
-      const numbers = toolStates.textInput.match(/\d+/g) || []
-      updateToolState("textOutput", numbers.join("\n"))
-    },
-
-    removeEmptyLines: () => {
-      const lines = toolStates.textInput.split("\n").filter((line: string) => line.trim() !== "")
-      updateToolState("textOutput", lines.join("\n"))
-    },
-
-    addLineNumbers: () => {
-      const lines = toolStates.textInput.split("\n")
-      const numbered = lines.map((line: string, index: number) => `${index + 1}. ${line}`)
-      updateToolState("textOutput", numbered.join("\n"))
-    },
-
-    findReplace: (find: string, replace: string) => {
-      const result = toolStates.textInput.replaceAll(new RegExp(find, "g"), replace)
-      updateToolState("textOutput", result)
     },
   }
 
@@ -572,25 +513,6 @@ export default function OneTapTools() {
       updateToolState("loremOutput", lorem.trim())
     },
 
-    generateSlug: () => {
-      const slug = toolStates.textInput
-        .toLowerCase()
-        .replaceAll(/[^a-z0-9 -]/g, "")
-        .replaceAll(/\s+/g, "-")
-        .replaceAll(/-+/g, "-")
-        .trim()
-        .replaceAll(/^-+/g, "")
-        .replaceAll(/-+$/g, "")
-      updateToolState("textOutput", slug)
-    },
-
-    generateRandomNumber: () => {
-      const min = Number.parseInt(toolStates.minNumber) || 1
-      const max = Number.parseInt(toolStates.maxNumber) || 100
-      const random = Math.floor(Math.random() * (max - min + 1)) + min
-      updateToolState("randomResult", random.toString())
-    },
-
     generateColorPalette: () => {
       const colors = []
       for (let i = 0; i < 5; i++) {
@@ -662,27 +584,6 @@ export default function OneTapTools() {
         .replaceAll("&quot;", '"')
         .replaceAll("&#39;", "'")
       updateToolState("htmlOutput", unescaped)
-    },
-
-    minifyCSS: () => {
-      const minified = toolStates.cssInput
-        .replaceAll(/\/\*[\s\S]*?\*\//g, "")
-        .replaceAll(/\s+/g, " ")
-        .replaceAll(/;\s*}/g, "}")
-        .replaceAll(/\s*{\s*/g, "{")
-        .replaceAll(/;\s*/g, ";")
-        .replaceAll(/,\s*/g, ",")
-        .trim()
-      updateToolState("cssOutput", minified)
-    },
-
-    formatCSS: () => {
-      const formatted = toolStates.cssInput
-        .replaceAll(/\s*{\s*/g, " {\n  ")
-        .replaceAll(/;\s*/g, ";\n  ")
-        .replaceAll(/\s*}\s*/g, "\n}\n\n")
-        .replaceAll(/,\s*/g, ",\n")
-      updateToolState("cssOutput", formatted)
     },
 
     formatXML: () => {
@@ -943,19 +844,6 @@ export default function OneTapTools() {
       const daysUntilBirthday = Math.ceil((nextBirthday.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
 
       updateToolState("dateOutput", `Age: ${adjustedAge} years\nDays until next birthday: ${daysUntilBirthday}`)
-    },
-  }
-
-  // Unit Conversion Functions
-  const unitTools = {
-    convertFileSize: () => {
-      const bytes = Number.parseFloat(toolStates.fileSize)
-      if (Number.isNaN(bytes)) return
-
-      const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
-      const i = Math.floor(Math.log(bytes) / Math.log(1024))
-      const result = (bytes / Math.pow(1024, i)).toFixed(2)
-      updateToolState("fileSizeResult", `${result} ${sizes[i]}`)
     },
   }
 
