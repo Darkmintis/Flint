@@ -13,7 +13,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 
 // NOSONAR: This component has high cognitive complexity due to 30+ tool implementations.
 // Refactoring into separate modules is planned for a future version.
-export default function OneTapTools() {
+export default function FlintTools() {
   const [openTools, setOpenTools] = useState<Record<string, boolean>>({})
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({})
   const [showBackToTop, setShowBackToTop] = useState(false)
@@ -1977,7 +1977,7 @@ export default function OneTapTools() {
             </h1>
           </div>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
-            Professional Developer Toolkit with 30+ Essential Utilities
+            Open-Source Professional Developer Toolkit with 30+ Essential Utilities
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700">
@@ -2081,9 +2081,9 @@ export default function OneTapTools() {
                   <span className="text-xl font-bold text-white">Flint</span>
                 </div>
                 <p className="text-slate-400 mb-4 max-w-sm">
-                  Professional developer toolkit with 30+ essential utilities. Fast, secure, and completely free.
+                  Professional open-source developer toolkit with 30+ essential utilities. Fast, secure, and completely free forever.
                 </p>
-                <div className="flex gap-3">
+                <div className="flex gap-3 flex-wrap">
                   <div className="flex items-center gap-2 text-sm text-slate-400">
                     <Shield className="h-4 w-4 text-green-400" />
                     <span>100% Client-Side</span>
@@ -2092,13 +2092,38 @@ export default function OneTapTools() {
                     <Sparkles className="h-4 w-4 text-blue-400" />
                     <span>Open Source</span>
                   </div>
+                  <a
+                    href="https://github.com/Darkmintis/Flint"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+                  >
+                    <Code2 className="h-4 w-4 text-purple-400" />
+                    <span>View on GitHub</span>
+                  </a>
                 </div>
               </div>
 
-              {/* Quick Links */}
+              {/* Our Projects */}
               <div>
-                <h3 className="text-white font-semibold mb-3">Quick Links</h3>
+                <h3 className="text-white font-semibold mb-3">Our Projects</h3>
                 <div className="flex flex-col gap-2">
+                  <a
+                    href="https://github.com/Darkmintis"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-white transition-colors"
+                  >
+                    GitHub Profile
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-white transition-colors"
+                  >
+                    More Tools Coming Soon
+                  </a>
                   <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">
                     Privacy Policy
                   </Link>
@@ -2108,16 +2133,34 @@ export default function OneTapTools() {
                 </div>
               </div>
 
-              {/* Contact */}
+              {/* Contact & Community */}
               <div>
-                <h3 className="text-white font-semibold mb-3">Contact</h3>
-                <a
-                  href="mailto:contact.darkmintis@gmail.com"
-                  className="text-slate-400 hover:text-white transition-colors inline-block mb-2"
-                >
-                  contact.darkmintis@gmail.com
-                </a>
-                <p className="text-sm text-slate-500 mt-3">
+                <h3 className="text-white font-semibold mb-3">Community</h3>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="https://github.com/Darkmintis/Flint/issues"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-white transition-colors"
+                  >
+                    Report Issues
+                  </a>
+                  <a
+                    href="https://github.com/Darkmintis/Flint/discussions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-white transition-colors"
+                  >
+                    Discussions
+                  </a>
+                  <a
+                    href="mailto:contact.darkmintis@gmail.com"
+                    className="text-slate-400 hover:text-white transition-colors"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+                <p className="text-sm text-slate-500 mt-4">
                   Built with ❤️ by developers,<br />for developers
                 </p>
               </div>
@@ -2126,12 +2169,21 @@ export default function OneTapTools() {
             {/* Bottom Bar */}
             <div className="pt-6 border-t border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-3">
               <p className="text-sm text-slate-500">
-                © {new Date().getFullYear()} Darkmintis. All rights reserved.
+                © {new Date().getFullYear()} Darkmintis. Open Source under MIT License.
               </p>
               <div className="flex items-center gap-4 text-sm text-slate-500">
                 <span>Made with Next.js</span>
                 <span>•</span>
                 <span>Hosted on GitHub Pages</span>
+                <span>•</span>
+                <a 
+                  href="https://github.com/Darkmintis/Flint" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Star on GitHub
+                </a>
               </div>
             </div>
           </div>
