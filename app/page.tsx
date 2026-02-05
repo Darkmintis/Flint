@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { ChevronDown, ChevronUp, Copy, Check, Zap, Sparkles, Shield, Clock, ArrowUp, Code2 } from "lucide-react"
+import { ChevronDown, ChevronUp, Copy, Check, ArrowUp } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useIsMobile } from "@/hooks/use-mobile"
 
@@ -1957,53 +1957,33 @@ export default function FlintTools() {
   const filteredTools = allTools
 
   return (
-    <div className="min-h-screen bg-slate-900 relative overflow-hidden flex flex-col">
-      {/* Clean Professional Background */}
+    <div className="min-h-screen bg-[#0a0a0f] relative overflow-hidden flex flex-col">
+      {/* Ultra Clean Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#0f0f14] to-[#0a0a0f]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-8 sm:py-12 min-h-screen flex flex-col">
-        {/* Simplified Professional Header */}
-        <header className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-3 rounded-xl mr-3 shadow-lg">
-              <Zap className="h-8 w-8 text-white" />
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
-              Flint
-            </h1>
-          </div>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
-            Open-Source Professional Developer Toolkit with 30+ Essential Utilities
+        {/* Modern Minimal Header */}
+        <header className="text-center mb-16">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight">
+            Flint
+          </h1>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-2">
+            Professional Developer Toolkit
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700">
-              <Clock className="h-4 w-4 text-blue-400" />
-              <span className="text-sm text-slate-300">Fast</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700">
-              <Shield className="h-4 w-4 text-green-400" />
-              <span className="text-sm text-slate-300">Secure</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700">
-              <Sparkles className="h-4 w-4 text-purple-400" />
-              <span className="text-sm text-slate-300">Free</span>
-            </div>
-          </div>
+          <p className="text-sm text-slate-500 max-w-2xl mx-auto">
+            30+ Essential Utilities · Open Source · Privacy-First
+          </p>
         </header>
 
         {/* Tools Section */}
         <main className="max-w-7xl mx-auto flex-1 w-full px-2 sm:px-4 pb-8">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700 mb-3">
-              <Code2 className="h-4 w-4 text-blue-400" />
-              <span className="text-sm font-medium text-slate-300">All Tools</span>
-            </div>
+          <div className="text-center mb-10">
             <p className="text-slate-400">
-              {allTools.length} tools available — click any tool to expand
+              {allTools.length} tools available · Click to expand
             </p>
           </div>
 
@@ -2012,7 +1992,7 @@ export default function FlintTools() {
             {filteredTools.map((tool) => (
               <Card
                 key={tool.uniqueId}
-                className="group bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 hover:border-blue-600/50 transition-all duration-200 overflow-hidden"
+                className="group bg-[#13131a]/80 border-slate-800 hover:bg-[#1a1a24]/90 hover:border-indigo-500/40 transition-all duration-200 overflow-hidden backdrop-blur-sm"
               >
                 <Collapsible open={openTools[tool.uniqueId]} onOpenChange={() => toggleTool(tool.uniqueId)}>
                   <CollapsibleTrigger asChild>
@@ -2026,14 +2006,14 @@ export default function FlintTools() {
                             {tool.description}
                           </CardDescription>
                           <div className="mt-3">
-                            <span className="text-xs font-medium text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
+                            <span className="text-xs font-medium text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
                               {tool.category}
                             </span>
                           </div>
                         </div>
                         <div className="flex-shrink-0 p-2 rounded-lg bg-slate-700/50">
                           {openTools[tool.uniqueId] ? (
-                            <ChevronUp className="h-5 w-5 text-blue-400" />
+                            <ChevronUp className="h-5 w-5 text-indigo-400" />
                           ) : (
                             <ChevronDown className="h-5 w-5 text-slate-400" />
                           )}
@@ -2061,129 +2041,26 @@ export default function FlintTools() {
         {showBackToTop && (
           <button
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg transition-colors"
+            className="fixed bottom-8 right-8 z-50 p-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg shadow-lg transition-colors"
             aria-label="Back to top"
           >
             <ArrowUp className="h-5 w-5" />
           </button>
         )}
 
-        {/* Footer */}
-        <footer className="mt-auto w-full border-t border-slate-700 bg-slate-800/50">
-          <div className="max-w-7xl mx-auto px-4 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-              {/* Brand */}
-              <div className="col-span-1 md:col-span-2">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-xl font-bold text-white">Flint</span>
-                </div>
-                <p className="text-slate-400 mb-4 max-w-sm">
-                  Professional open-source developer toolkit with 30+ essential utilities. Fast, secure, and completely free forever.
-                </p>
-                <div className="flex gap-3 flex-wrap">
-                  <div className="flex items-center gap-2 text-sm text-slate-400">
-                    <Shield className="h-4 w-4 text-green-400" />
-                    <span>100% Client-Side</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-400">
-                    <Sparkles className="h-4 w-4 text-blue-400" />
-                    <span>Open Source</span>
-                  </div>
-                  <a
-                    href="https://github.com/Darkmintis/Flint"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
-                  >
-                    <Code2 className="h-4 w-4 text-purple-400" />
-                    <span>View on GitHub</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Our Projects */}
-              <div>
-                <h3 className="text-white font-semibold mb-3">Our Projects</h3>
-                <div className="flex flex-col gap-2">
-                  <a
-                    href="https://github.com/Darkmintis"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    GitHub Profile
-                  </a>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    More Tools Coming Soon
-                  </a>
-                  <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">
-                    Privacy Policy
-                  </Link>
-                  <Link href="/terms" className="text-slate-400 hover:text-white transition-colors">
-                    Terms of Service
-                  </Link>
-                </div>
-              </div>
-
-              {/* Contact & Community */}
-              <div>
-                <h3 className="text-white font-semibold mb-3">Community</h3>
-                <div className="flex flex-col gap-2">
-                  <a
-                    href="https://github.com/Darkmintis/Flint/issues"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Report Issues
-                  </a>
-                  <a
-                    href="https://github.com/Darkmintis/Flint/discussions"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Discussions
-                  </a>
-                  <a
-                    href="mailto:contact.darkmintis@gmail.com"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    Contact Us
-                  </a>
-                </div>
-                <p className="text-sm text-slate-500 mt-4">
-                  Built with ❤️ by developers,<br />for developers
+        {/* Minimal Professional Footer */}
+        <footer className="border-t border-slate-800/50 mt-16 py-8">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="text-center md:text-left">
+                <p className="text-slate-400 text-sm">
+                  © {new Date().getFullYear()} <a href="https://github.com/Darkmintis" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Darkmintis</a> · Open Source <a href="https://github.com/Darkmintis/Flint" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">MIT License</a>
                 </p>
               </div>
-            </div>
-
-            {/* Bottom Bar */}
-            <div className="pt-6 border-t border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-3">
-              <p className="text-sm text-slate-500">
-                © {new Date().getFullYear()} Darkmintis. Open Source under MIT License.
-              </p>
               <div className="flex items-center gap-4 text-sm text-slate-500">
-                <span>Made with Next.js</span>
-                <span>•</span>
-                <span>Hosted on GitHub Pages</span>
-                <span>•</span>
-                <a 
-                  href="https://github.com/Darkmintis/Flint" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  Star on GitHub
-                </a>
+                <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+                <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+                <a href="https://github.com/Darkmintis/Flint" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
               </div>
             </div>
           </div>
