@@ -7,12 +7,12 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "1Tap Tools - Professional Developer Toolkit | 30+ Essential Tools",
+  title: "Flint - Professional Developer Toolkit | 30+ Essential Tools",
   description:
     "Professional developer toolkit with 30+ essential tools for encoding, decoding, formatting, and generating. Base64, URL encoding, QR codes, JSON formatting, hash generation, password generator, and more. Fast, secure, and free.",
   generator: 'Next.js',
   keywords: [
-    '1tap tools',
+    'Flint',
     'developer tools',
     'base64 encoder',
     'json formatter',
@@ -34,15 +34,15 @@ export const metadata: Metadata = {
   creator: 'Darkmintis',
   publisher: 'Darkmintis',
   openGraph: {
-    title: '1Tap Tools - Professional Developer Toolkit',
+    title: 'Flint - Professional Developer Toolkit',
     description: 'Professional developer toolkit with 30+ essential tools. Fast, secure, and completely free.',
-    siteName: '1Tap Tools',
+    siteName: 'Flint',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '1Tap Tools - Professional Developer Toolkit',
+    title: 'Flint - Professional Developer Toolkit',
     description: 'Professional developer toolkit with 30+ essential tools. Fast, secure, and free.',
     creator: '@darkmintisog',
   },

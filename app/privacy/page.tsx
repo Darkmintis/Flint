@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
                 <span>Your Privacy Matters</span>
               </h2>
               <p className="leading-relaxed">
-                At 1Tap Tools, we are committed to protecting your privacy. All tools on this platform are designed
+                At Flint, we are committed to protecting your privacy. All tools on this platform are designed
                 to work entirely in your browser without sending your data to any servers.
               </p>
             </section>

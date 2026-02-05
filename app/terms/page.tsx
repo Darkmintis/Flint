@@ -40,7 +40,7 @@ export default function TermsOfService() {
                 <span>Acceptance of Terms</span>
               </h2>
               <p className="leading-relaxed">
-                By accessing and using 1Tap Tools, you accept and agree to be bound by these Terms of Service.
+                By accessing and using Flint, you accept and agree to be bound by these Terms of Service.
                 If you do not agree to these terms, please do not use our services.
               </p>
             </section>
@@ -69,13 +69,13 @@ export default function TermsOfService() {
                 <span className="w-1.5 h-1.5 rounded-full bg-pink-400"></span>
                 <span>Acceptable Use</span>
               </h2>
-              <p className="mb-3">You agree to use 1Tap Tools only for lawful purposes. You must not:</p>
+              <p className="mb-3">You agree to use Flint only for lawful purposes. You must not:</p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gray-500"></span>Use the tools to process illegal or harmful content</li>
                 <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gray-500"></span>Attempt to compromise the security of the website</li>
                 <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gray-500"></span>Reverse engineer or copy the source code without permission</li>
                 <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gray-500"></span>Use automated systems to access the tools excessively</li>
-                <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gray-500"></span>Misrepresent your affiliation with 1Tap Tools</li>
+                <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-gray-500"></span>Misrepresent your affiliation with Flint</li>
               </ul>
             </section>
 
@@ -85,7 +85,7 @@ export default function TermsOfService() {
                 <span>Disclaimer of Warranties</span>
               </h2>
               <p className="mb-3 leading-relaxed">
-                1Tap Tools is provided "as is" and "as available" without any warranties of any kind, either
+                Flint is provided "as is" and "as available" without any warranties of any kind, either
                 express or implied.
               </p>
               <p className="leading-relaxed">
@@ -100,7 +100,7 @@ export default function TermsOfService() {
                 <span>Limitation of Liability</span>
               </h2>
               <p className="leading-relaxed">
-                To the maximum extent permitted by law, 1Tap Tools and its creators shall not be liable for any
+                To the maximum extent permitted by law, Flint and its creators shall not be liable for any
                 indirect, incidental, special, consequential, or punitive damages resulting from your use of or
                 inability to use the tools.
               </p>
@@ -123,7 +123,7 @@ export default function TermsOfService() {
                 <span>Intellectual Property</span>
               </h2>
               <p className="leading-relaxed">
-                The 1Tap Tools website, design, and code are protected by copyright and other intellectual property
+                The Flint website, design, and code are protected by copyright and other intellectual property
                 rights. All rights are reserved by Darkmintis.
               </p>
             </section>

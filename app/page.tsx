@@ -1973,7 +1973,7 @@ export default function OneTapTools() {
               <Zap className="h-8 w-8 text-white" />
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
-              1Tap Tools
+              Flint
             </h1>
           </div>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
@@ -2078,7 +2078,7 @@ export default function OneTapTools() {
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center">
                     <Zap className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-xl font-bold text-white">1Tap Tools</span>
+                  <span className="text-xl font-bold text-white">Flint</span>
                 </div>
                 <p className="text-slate-400 mb-4 max-w-sm">
                   Professional developer toolkit with 30+ essential utilities. Fast, secure, and completely free.
