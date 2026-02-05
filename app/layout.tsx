@@ -7,9 +7,9 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "1Tap Tools - All-in-One Developer Toolkit | 30+ Essential Tools",
+  title: "1Tap Tools - Professional Developer Toolkit | 30+ Essential Tools",
   description:
-    "The ultimate developer toolkit with 30+ essential tools for encoding, decoding, formatting, and generating. Base64, URL encoding, QR codes, JSON formatting, hash generation, password generator, and more. Simple, fast, and beautiful.",
+    "Professional developer toolkit with 30+ essential tools for encoding, decoding, formatting, and generating. Base64, URL encoding, QR codes, JSON formatting, hash generation, password generator, and more. Fast, secure, and free.",
   generator: 'Next.js',
   keywords: [
     '1tap tools',
@@ -27,33 +27,23 @@ export const metadata: Metadata = {
     'encoding tools',
     'conversion tools',
     'uuid generator',
-    'color converter'
+    'color converter',
+    'professional toolkit'
   ],
   authors: [{ name: 'Darkmintis' }],
   creator: 'Darkmintis',
   publisher: 'Darkmintis',
-  metadataBase: new URL('https://onetap-tools.vercel.app'),
   openGraph: {
-    title: '1Tap Tools - All-in-One Developer Toolkit | 30+ Essential Tools',
-    description: 'The ultimate developer toolkit with 30+ essential tools. Simple, fast, and beautiful tools for encoding, decoding, formatting, and generating.',
-    url: 'https://onetap-tools.vercel.app',
+    title: '1Tap Tools - Professional Developer Toolkit',
+    description: 'Professional developer toolkit with 30+ essential tools. Fast, secure, and completely free.',
     siteName: '1Tap Tools',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: '1Tap Tools - Developer Toolkit',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '1Tap Tools - All-in-One Developer Toolkit | 30+ Essential Tools',
-    description: 'The ultimate developer toolkit with 30+ essential tools. Simple, fast, and beautiful.',
-    images: ['/og-image.png'],
+    title: '1Tap Tools - Professional Developer Toolkit',
+    description: 'Professional developer toolkit with 30+ essential tools. Fast, secure, and free.',
     creator: '@darkmintisog',
   },
   robots: {
