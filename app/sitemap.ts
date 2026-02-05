@@ -1,9 +1,11 @@
 import { MetadataRoute } from 'next'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://onetap-tools.vercel.app',
+      url: 'https://darkmintis.github.io/Flint',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
